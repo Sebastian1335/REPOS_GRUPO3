@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+
+.form{
+  padding-top: 20px;
+}
+
+.iz{
+  padding-left: 150px;
+}
+
+.spc{
+  display: inline;
+  padding-left:10px;
+}
+
+.letra{
+  font-size: small;
+}
