@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items:normal;
+    justify-content: center;
+    width: 1500px;
+    padding-top: 100px;
+  }
+
+.container h3,h4{
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+
+.color{
+    color: blueviolet;
+}
+
+.bcolor{
+    color: blueviolet;
+    float: left;
+}
+
+
+.ex{
+    text-align: left;
+    padding-left: 0px;
+}
+
+.bot{
+    justify-content: right;
+}

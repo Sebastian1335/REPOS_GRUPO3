@@ -27,6 +27,12 @@ export default function Home() {
         <li>
           <Link href="/ejercicio6" text="Ejercicio 6" />
         </li>
+        <li>
+          <Link href="/Login" text="Login" />
+        </li>
+        <li>
+          <Link href="/Registro" text="Registro" />
+        </li>
       </ul>
       <div>
           A simple primary alert—check it out!
