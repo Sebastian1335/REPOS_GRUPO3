@@ -3,8 +3,10 @@
     flex-direction: column;
     align-items:normal;
     justify-content: center;
-    width: 1500px;
-    padding-top: 100px;
+    width: 90vh;
+    height: 100vh;
+
+
   }
 
 .container h3,h4{
@@ -14,6 +16,7 @@
 
 
 .color{
+    margin-top: 20px;
     color: blueviolet;
 }
 
@@ -24,8 +27,8 @@
 
 
 .ex{
-    text-align: left;
-    padding-left: 0px;
+    margin-top: 30px;
+    color:blueviolet;
 }
 
 .bot{

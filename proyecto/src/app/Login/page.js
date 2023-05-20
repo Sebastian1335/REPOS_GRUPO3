@@ -3,7 +3,7 @@
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Stack from 'react-bootstrap/Stack';
-
+import Link from '../../components/Link/Link.jsx'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
@@ -39,8 +39,12 @@ const Login = () => {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="" />
                 <Form.Text className="text-muted" >
-                    <button type="button" class="btn btn-link"><p className='letra'>Registro de nuevo usuario </p> </button>
-                    <button type="button" class="btn btn-link"> <p className='letra'> olvide mi contraseña </p></button> 
+                    <button type="button" class="btn btn-link" to="/Registro">
+                        <Link href="/Registro" text="Registro de nuevo usuario" /> 
+                    </button>
+                    <button type="button" class="btn btn-link"> 
+                        <Link href="/app/page.js" text="Olvide mi contraseña" />
+                    </button> 
                 </Form.Text>
             </Form.Group>
             <div className='iz'>
