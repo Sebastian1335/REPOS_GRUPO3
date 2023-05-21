@@ -2,13 +2,14 @@
 import React, { useState } from 'react';
 import TopBar from '@/components/TopBar/TopBar';
 import Menu from '@/components/Menu/Menu';
+import Cita from '@/components/Cita/Cita';
 import styles from '../docente/page.module.css'
 
 
 const Docente = () => {
-    const [MenuIsVisible, setMenuIsVisible] = useState(true);
+    const [MenuIsVisible, setMenuIsVisible] = useState(false);
     
-    function EsconderMenu()
+    function AparecerMenu()
     {
         setMenuIsVisible(!MenuIsVisible)
     }
@@ -21,13 +22,22 @@ const Docente = () => {
     
     return (
         <div>
-            <TopBar onButtonClick={EsconderMenu}></TopBar>
-            <div className={styles.tablero}>
-                <h2 className={styles.texto}>Bienvenido, (Titulo) (Nombre)!</h2>
-                <hr/>
-                <div className={styles.content}>
+            <TopBar onButtonClick={AparecerMenu}></TopBar>
+            <div className={styles.Main}>
+                <div className={styles.Info}>
+                    <h2>Bienvenido, (Titulo) (Nombre)!</h2>
+                    <hr/>  
+                    <div className={styles.Fondo}>
+                        <h2>Próximas Citas</h2>
+                        <Cita></Cita>
+                        <Cita></Cita>
+                        <Cita></Cita>
+                        <Cita></Cita>
+                    </div>
+                </div>
+
+                <div className={styles.Menu}>
                     {BarraLateral}
-                    
                 </div>
             </div>
         </div>
