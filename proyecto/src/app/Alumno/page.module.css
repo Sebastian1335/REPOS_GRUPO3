@@ -1,0 +1,16 @@
+.Main {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+
+}
+
+.Info {
+    padding: 4%;
+    width: -webkit-fill-available;
+}
+
+.Fondo {
+    background-color: #F3EEF6;
+    padding: 15px;
+}

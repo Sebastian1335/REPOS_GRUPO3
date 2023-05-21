@@ -1,5 +1,5 @@
 import Link from "next/link"
-import styles from "../Menu/Menu.module.css"
+import styles from "../MenuDocente/Menu.module.css"
 
 const Menu = () => {
   return (

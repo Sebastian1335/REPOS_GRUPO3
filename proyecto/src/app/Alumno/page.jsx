@@ -1,11 +1,11 @@
 'use client';
 import React, { useState } from 'react';
 import TopBar from '@/components/TopBar/TopBar';
-import Menu from '@/components/MenuDocente/Menu';
+import Menu from '@/components/MenuAlumno/Menu';
 import styles from '../docente/page.module.css'
 
 
-const Docente = () => {
+const Alumno = () => {
     const [MenuIsVisible, setMenuIsVisible] = useState(false);
     
     function AparecerMenu()
@@ -24,7 +24,7 @@ const Docente = () => {
             <TopBar onButtonClick={AparecerMenu}></TopBar>
             <div className={styles.Main}>
                 <div className={styles.Info}>
-                    <h2>Bienvenido, (Titulo) (Nombre)!</h2>
+                    <h2>Bienvenido, (Nombre)!</h2>
                     <hr/>  
                     <div className={styles.Fondo}>
                         <h2>Próximas Citas</h2>
@@ -39,4 +39,4 @@ const Docente = () => {
     )
 } 
 
-export default Docente
+export default Alumno
