@@ -29,10 +29,6 @@ const Docente = () => {
                     <hr/>  
                     <div className={styles.Fondo}>
                         <h2>Próximas Citas</h2>
-                        <Cita></Cita>
-                        <Cita></Cita>
-                        <Cita></Cita>
-                        <Cita></Cita>
                     </div>
                 </div>
 

@@ -1,6 +1,6 @@
 .Sidebar {
     background-color: #D9D9D9;
-    height: calc(100vh - 60px) !important;
+    height: 100vh;
     display: inline-table;
     overflow: auto;
 }
