@@ -116,7 +116,7 @@ const Registro = () =>{
                                 name="rol"
                                 value={persona.rol}
                                 onChange={e => setPersona({...persona,rol: e.target.value})}>
-                                    <option className='color'>Rol</option>
+                                    
                                     <option value="estudiante" className='color'>Estudiante</option>
                                     <option value="profesor" className='color'>Profesor</option>
                             </Form.Select>
