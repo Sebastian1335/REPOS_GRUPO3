@@ -1,7 +1,15 @@
-/*
-CSS de page.js
-*/
-
-.main {
+.Main {
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+
+}
+
+.carousel {
+  width: -webkit-fill-available;
+
+}
+
+.carousel-inner {
+  height: 650px;
 }

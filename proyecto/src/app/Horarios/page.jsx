@@ -26,7 +26,6 @@ export default function HorarioDocente() {
     horaFin: "",
     sesionLink: "",
   });
-  const [error, setError] = useState("");
 
   useEffect(() => {
     const storedHorario = localStorage.getItem("horario");

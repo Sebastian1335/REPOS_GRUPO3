@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import { FaUserCircle, FaBars } from "react-icons/fa";
 import Link from "next/link"
