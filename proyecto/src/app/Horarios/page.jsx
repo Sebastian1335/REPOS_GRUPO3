@@ -18,8 +18,8 @@ export default function HorarioDocente() {
     BarraLateral = <Menu />;
   }
 
-  const [schedule, setSchedule] = useState([]);
-  const [newSchedule, setNewSchedule] = useState({
+  const [horario, setHorario] = useState([]);
+  const [newHorario, setNewHorario] = useState({
     diaSemana: "",
     horaInicio: "",
     horaFin: "",
@@ -28,38 +28,38 @@ export default function HorarioDocente() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const storedSchedule = localStorage.getItem("schedule");
-    if (storedSchedule) {
-      setSchedule(JSON.parse(storedSchedule));
+    const storedHorario = localStorage.getItem("horario");
+    if (storedHorario) {
+      setHorario(JSON.parse(storedHorario));
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("schedule", JSON.stringify(schedule));
-  }, [schedule]);
+    localStorage.setItem("horario", JSON.stringify(horario));
+  }, [horario]);
 
   const handleInputChange = (e) => {
-    setNewSchedule({
-      ...newSchedule,
+    setNewHorario({
+      ...newHorario,
       [e.target.name]: e.target.value,
     });
   };
 
-  const addSchedule = (e) => {
+  const addHorario = (e) => {
     e.preventDefault();
 
     if (
-      newSchedule.diaSemana.trim() === "" ||
-      newSchedule.horaInicio === "" ||
-      newSchedule.horaFin === "" ||
-      newSchedule.sesionLink.trim() === ""
+      newHorario.diaSemana.trim() === "" ||
+      newHorario.horaInicio === "" ||
+      newHorario.horaFin === "" ||
+      newHorario.sesionLink.trim() === ""
     ) {
       setError("Todos los campos son obligatorios");
       return;
     }
 
-    setSchedule([...schedule, newSchedule]);
-    setNewSchedule({
+    setHorario([...horario, newHorario]);
+    setNewHorario({
       diaSemana: "",
       horaInicio: "",
       horaFin: "",
@@ -68,10 +68,10 @@ export default function HorarioDocente() {
     setError("");
   };
 
-  const deleteSchedule = (index) => {
-    const updatedSchedule = [...schedule];
-    updatedSchedule.splice(index, 1);
-    setSchedule(updatedSchedule);
+  const deleteHorario = (index) => {
+    const updatedHorario = [...horario];
+    updatedHorario.splice(index, 1);
+    setHorario(updatedHorario);
   };
 
   return (
@@ -82,7 +82,7 @@ export default function HorarioDocente() {
           <h2>Mis Horarios</h2>
           <hr />
           Agregue sus horarios disponibles de la semana
-          <form onSubmit={addSchedule} className={styles.form}>
+          <form onSubmit={addHorario} className={styles.form}>
             <div className={styles.inputGroup}>
               <input
                 className={styles.input}
@@ -90,7 +90,7 @@ export default function HorarioDocente() {
                 id="dia"
                 type="text"
                 name="diaSemana"
-                value={newSchedule.diaSemana}
+                value={newHorario.diaSemana}
                 onChange={handleInputChange}
               ></input>
               <label for="dia" className={styles.inputLabel}>
@@ -105,7 +105,7 @@ export default function HorarioDocente() {
                 id="inicio"
                 type="text"
                 name="horaInicio"
-                value={newSchedule.horaInicio}
+                value={newHorario.horaInicio}
                 onChange={handleInputChange}
               ></input>
               <label for="inicio" className={styles.inputLabel}>
@@ -120,7 +120,7 @@ export default function HorarioDocente() {
                 id="fin"
                 type="text"
                 name="horaFin"
-                value={newSchedule.horaFin}
+                value={newHorario.horaFin}
                 onChange={handleInputChange}
               ></input>
               <label for="fin" className={styles.inputLabel}>
@@ -135,7 +135,7 @@ export default function HorarioDocente() {
                 className={styles.input}
                 required
                 id="enlace"
-                value={newSchedule.sesionLink}
+                value={newHorario.sesionLink}
                 onChange={handleInputChange}
               ></input>
               <label for="enlace" className={styles.inputLabel}>
@@ -151,15 +151,15 @@ export default function HorarioDocente() {
 
           </form>
 
-          <div className={styles.scheduleContainer}>
-            {schedule.length > 0 ? (
-              schedule.map((item, index) => (
-                <div key={index} className={styles.scheduleItem}>
+          <div className={styles.horarioContainer}>
+            {horario.length > 0 ? (
+              horario.map((item, index) => (
+                <div key={index} className={styles.horarioItem}>
                   <p>{item.diaSemana}</p>
                   <p>{item.horaInicio}</p>
                   <p>{item.horaFin}</p>
                   <p>{item.sesionLink}</p>
-                  <button onClick={() => deleteSchedule(index)}>
+                  <button onClick={() => deleteHorario(index)}>
                     Eliminar
                   </button>
                 </div>

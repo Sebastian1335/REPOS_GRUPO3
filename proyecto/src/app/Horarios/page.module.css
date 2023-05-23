@@ -82,11 +82,11 @@
   color: white;
 }
 
-.scheduleContainer {
+.horarioContainer {
   margin-top: 20px;
 }
 
-.scheduleItem {
+.horarioItem {
   display: flex;
   justify-content: space-around;
   background-color: purple;
