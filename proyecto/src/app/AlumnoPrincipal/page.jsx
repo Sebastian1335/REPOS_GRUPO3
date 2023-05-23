@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import TopBar from '@/components/TopBar/TopBar';
 import Menu from '@/components/MenuAlumno/Menu';
-import styles from '../Alumno/page.module.css'
+import styles from '../AlumnoPrincipal/page.module.css'
 
 
 const Alumno = () => {

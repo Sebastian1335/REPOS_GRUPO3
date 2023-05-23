@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import TopBar from "@/components/TopBar/TopBar";
 import Menu from "@/components/MenuDocente/Menu";
 import styles from "../Horarios/page.module.css";
+import { FiX } from "react-icons/fi";
 
 export default function HorarioDocente() {
   const [MenuIsVisible, setMenuIsVisible] = useState(false);
@@ -48,16 +49,6 @@ export default function HorarioDocente() {
   const addHorario = (e) => {
     e.preventDefault();
 
-    if (
-      newHorario.diaSemana.trim() === "" ||
-      newHorario.horaInicio === "" ||
-      newHorario.horaFin === "" ||
-      newHorario.sesionLink.trim() === ""
-    ) {
-      setError("Todos los campos son obligatorios");
-      return;
-    }
-
     setHorario([...horario, newHorario]);
     setNewHorario({
       diaSemana: "",
@@ -65,7 +56,6 @@ export default function HorarioDocente() {
       horaFin: "",
       sesionLink: "",
     });
-    setError("");
   };
 
   const deleteHorario = (index) => {
@@ -143,24 +133,22 @@ export default function HorarioDocente() {
               </label>
             </div>
 
+            {error && <p>{error}</p>}
+
             <button className={styles.BtnAceptar} type="submit">
               Agregar
             </button>
-
-            {error && <p>{error}</p>}
-
           </form>
-
           <div className={styles.horarioContainer}>
             {horario.length > 0 ? (
               horario.map((item, index) => (
                 <div key={index} className={styles.horarioItem}>
-                  <p>{item.diaSemana}</p>
-                  <p>{item.horaInicio}</p>
-                  <p>{item.horaFin}</p>
-                  <p>{item.sesionLink}</p>
-                  <button onClick={() => deleteHorario(index)}>
-                    Eliminar
+                  <div className={styles.numeroHorario}>{index + 1}</div>
+                  <div className={styles.horarioDetalle}>
+                    <div>{item.diaSemana} de {item.horaInicio} a {item.horaFin}</div>
+                  </div>
+                  <button className={styles.Btn} onClick={() => deleteHorario(index)}>
+                    <FiX size={25} color="#684FA5"></FiX>
                   </button>
                 </div>
               ))

@@ -83,18 +83,40 @@
 }
 
 .horarioContainer {
-  margin-top: 20px;
+  margin-top: 25px;
+  padding: 30px 30px 0 30px;
 }
 
 .horarioItem {
   display: flex;
-  justify-content: space-around;
-  background-color: purple;
-  color: white;
-  padding: 10px;
-  margin-bottom: 10px;
+  background-color: #F3EEF6;
+  color: black;
+  padding: 15px;
+  margin-bottom: 20px;
   border-radius: 5px;
+  align-items: center;
 }
+
+.numeroHorario {
+  background-color: #684FA5;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px; 
+}
+
+.horarioDetalle {
+  flex-grow: 1;
+}
+
+.Btn{
+  border: 0;
+}
+
 
 @media (min-width: 1000px) {
   .form {
