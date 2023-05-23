@@ -133,8 +133,6 @@ export default function HorarioDocente() {
               </label>
             </div>
 
-            {error && <p>{error}</p>}
-
             <button className={styles.BtnAceptar} type="submit">
               Agregar
             </button>
