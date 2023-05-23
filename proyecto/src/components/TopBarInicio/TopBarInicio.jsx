@@ -18,9 +18,6 @@ const TopBar = () => {
           <Link className={styles.item} href="/Login">Iniciar Sesión</Link>
         </div>
       </Navbar>
-
-      <div className={styles.fondo}>
-      </div>
     </div>
   );
 };
