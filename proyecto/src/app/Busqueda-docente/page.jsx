@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import TopBar from '@/components/TopBar/TopBar';
 import Menu from '@/components/MenuAlumno/Menu';
-import styles from '../docente/page.module.css'
+import styles from '../DocentePrincipal/page.module.css'
 import PersonaApi from '@/api/persona.js'
 import Form from 'react-bootstrap/Form';
 import Chip from '../../components/Chip/Chip.jsx'
