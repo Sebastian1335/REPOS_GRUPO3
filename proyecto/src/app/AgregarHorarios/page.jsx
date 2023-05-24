@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import TopBar from "@/components/TopBar/TopBar";
 import Menu from "@/components/MenuDocente/Menu";
-import styles from "../Horarios/page.module.css";
+import styles from "../AgregarHorarios/page.module.css";
 import { FiX } from "react-icons/fi";
 
 export default function HorarioDocente() {
@@ -82,7 +82,7 @@ export default function HorarioDocente() {
           <form className={styles.form}>
             <div className={styles.inputGroup}>
               <input
-                className={styles.input2}
+                className={styles.input}
                 type="date"
                 required
                 id="fecha"
@@ -99,7 +99,7 @@ export default function HorarioDocente() {
                 className={styles.input}
                 required
                 id="inicio"
-                type="text"
+                type='time'
                 value={horaInicio}
                 onChange={(e) => setHoraInicio(e.target.value)}
               ></input>
@@ -111,7 +111,7 @@ export default function HorarioDocente() {
             <div className={styles.inputGroup}>
               <input
                 className={styles.input}
-                type="text"
+                type='time'
                 value={horaFin}
                 required
                 id="fin"
@@ -151,7 +151,7 @@ export default function HorarioDocente() {
                   <div className={styles.numeroHorario}>{index + 1}</div>
                   <div className={styles.horarioDetalle}>
                     <div>
-                      {horarioItem.dia} de {horarioItem.horaInicio} a{" "}
+                      El día {horarioItem.dia} de {horarioItem.horaInicio} a{" "}
                       {horarioItem.horaFin}
                     </div>
                   </div>
