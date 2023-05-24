@@ -52,6 +52,7 @@ export default function HorarioDocente() {
       enlace: enlace,
     };
 
+    //Guardar en el localStorage
     const horarioData = [...horario, nuevoHorario];
     setHorario(horarioData);
     localStorage.setItem("horario", JSON.stringify(horarioData));
