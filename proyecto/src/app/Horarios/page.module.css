@@ -32,6 +32,18 @@
   outline: 2px solid black;
 }
 
+.input2 {
+  padding: 1px 4px;
+  height: 40px;
+  width: 230px;
+  border: none;
+  border-radius: 4px;
+  font: inherit;
+  color: white;
+  background-color: transparent;
+  outline: 2px solid black;
+}
+
 .inputLabel {
   position: absolute;
   font-size: smaller;
@@ -56,6 +68,27 @@
 
 .input:is(:valid, :focus) {
   outline-color: #684fa5;
+}
+
+.input2:focus + .inputLabel,
+.input2:valid + .inputLabel {
+  transform: translate(2px, -14px) scale(0.8);
+  color: #684fa5;
+  padding-inline: 5px;
+  background-color: white;
+  border-right: 4px;
+  border: 3px solid #fff;
+  border-top: none;
+  border-bottom: none;
+}
+
+.input:is(:valid, :focus) {
+  outline-color: #684fa5;
+}
+
+.input2:is(:valid, :focus) {
+  outline-color: #684fa5;
+  color: black;
 }
 
 .form {
@@ -116,7 +149,6 @@
 .Btn{
   border: 0;
 }
-
 
 @media (min-width: 1000px) {
   .form {

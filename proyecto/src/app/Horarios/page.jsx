@@ -1,12 +1,12 @@
 "use client";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import TopBar from "@/components/TopBar/TopBar";
 import Menu from "@/components/MenuDocente/Menu";
 import styles from "../Horarios/page.module.css";
 import { FiX } from "react-icons/fi";
 
 export default function HorarioDocente() {
+  //Funciones para aparecer el menu
   const [MenuIsVisible, setMenuIsVisible] = useState(false);
 
   function AparecerMenu() {
@@ -19,48 +19,49 @@ export default function HorarioDocente() {
     BarraLateral = <Menu />;
   }
 
+  //Funciones para agregar horarios
   const [horario, setHorario] = useState([]);
-  const [newHorario, setNewHorario] = useState({
-    diaSemana: "",
-    horaInicio: "",
-    horaFin: "",
-    sesionLink: "",
-  });
+  const [dia, setDia] = useState("");
+  const [horaInicio, setHoraInicio] = useState("");
+  const [horaFin, setHoraFin] = useState("");
+  const [enlace, setEnlace] = useState("");
 
   useEffect(() => {
-    const storedHorario = localStorage.getItem("horario");
-    if (storedHorario) {
-      setHorario(JSON.parse(storedHorario));
-    }
+    obtenerHorario();
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("horario", JSON.stringify(horario));
-  }, [horario]);
-
-  const handleInputChange = (e) => {
-    setNewHorario({
-      ...newHorario,
-      [e.target.name]: e.target.value,
-    });
+  const obtenerHorario = () => {
+    const storedHorario = localStorage.getItem("horario");
+    if (storedHorario) {
+      const horarioData = JSON.parse(storedHorario);
+      setHorario(horarioData);
+    }
   };
 
-  const addHorario = (e) => {
-    e.preventDefault();
+  const agregarHorario = () => {
+    const nuevoHorario = {
+      dia: dia,
+      horaInicio: horaInicio,
+      horaFin: horaFin,
+      enlace: enlace,
+    };
 
-    setHorario([...horario, newHorario]);
-    setNewHorario({
-      diaSemana: "",
-      horaInicio: "",
-      horaFin: "",
-      sesionLink: "",
-    });
+    const horarioData = [...horario, nuevoHorario];
+    setHorario(horarioData);
+    localStorage.setItem("horario", JSON.stringify(horarioData));
+
+    // Limpiar los campos después de agregar el horario
+    setDia("");
+    setHoraInicio("");
+    setHoraFin("");
+    setEnlace("");
   };
 
-  const deleteHorario = (index) => {
-    const updatedHorario = [...horario];
-    updatedHorario.splice(index, 1);
-    setHorario(updatedHorario);
+  const eliminarHorario = (index) => {
+    const horarioData = [...horario];
+    horarioData.splice(index, 1);
+    setHorario(horarioData);
+    localStorage.setItem("horario", JSON.stringify(horarioData));
   };
 
   return (
@@ -71,18 +72,17 @@ export default function HorarioDocente() {
           <h2>Mis Horarios</h2>
           <hr />
           Agregue sus horarios disponibles de la semana
-          <form onSubmit={addHorario} className={styles.form}>
+          <form className={styles.form}>
             <div className={styles.inputGroup}>
               <input
-                className={styles.input}
+                className={styles.input2}
+                type="date"
                 required
-                id="dia"
-                type="text"
-                name="diaSemana"
-                value={newHorario.diaSemana}
-                onChange={handleInputChange}
+                id="fecha"
+                value={dia}
+                onChange={(e) => setDia(e.target.value)}
               ></input>
-              <label for="dia" className={styles.inputLabel}>
+              <label for="fecha" className={styles.inputLabel}>
                 Día de Semana
               </label>
             </div>
@@ -93,9 +93,8 @@ export default function HorarioDocente() {
                 required
                 id="inicio"
                 type="text"
-                name="horaInicio"
-                value={newHorario.horaInicio}
-                onChange={handleInputChange}
+                value={horaInicio}
+                onChange={(e) => setHoraInicio(e.target.value)}
               ></input>
               <label for="inicio" className={styles.inputLabel}>
                 Hora de Inicio
@@ -105,12 +104,11 @@ export default function HorarioDocente() {
             <div className={styles.inputGroup}>
               <input
                 className={styles.input}
+                type="text"
+                value={horaFin}
                 required
                 id="fin"
-                type="text"
-                name="horaFin"
-                value={newHorario.horaFin}
-                onChange={handleInputChange}
+                onChange={(e) => setHoraFin(e.target.value)}
               ></input>
               <label for="fin" className={styles.inputLabel}>
                 Hora de Fin
@@ -120,32 +118,42 @@ export default function HorarioDocente() {
             <div className={styles.inputGroup}>
               <input
                 type="text"
-                name="sesionLink"
+                value={enlace}
+                onChange={(e) => setEnlace(e.target.value)}
                 className={styles.input}
                 required
                 id="enlace"
-                value={newHorario.sesionLink}
-                onChange={handleInputChange}
               ></input>
               <label for="enlace" className={styles.inputLabel}>
                 Enlace de Sesión
               </label>
             </div>
 
-            <button className={styles.BtnAceptar} type="submit">
+            <button
+              className={styles.BtnAceptar}
+              onClick={agregarHorario}
+              type="submit"
+            >
               Agregar
             </button>
           </form>
           <div className={styles.horarioContainer}>
             {horario.length > 0 ? (
-              horario.map((item, index) => (
+              horario.map((horarioItem, index) => (
                 <div key={index} className={styles.horarioItem}>
                   <div className={styles.numeroHorario}>{index + 1}</div>
                   <div className={styles.horarioDetalle}>
-                    <div>{item.diaSemana} de {item.horaInicio} a {item.horaFin}</div>
+                    <div>
+                      {horarioItem.dia} de {horarioItem.horaInicio} a{" "}
+                      {horarioItem.horaFin}
+                    </div>
                   </div>
-                  <button className={styles.Btn} onClick={() => deleteHorario(index)}>
-                    <FiX size={25} color="#684FA5"></FiX>
+
+                  <button
+                    className={styles.Btn}
+                    onClick={() => eliminarHorario(index)}
+                  >
+                    <FiX></FiX>
                   </button>
                 </div>
               ))
