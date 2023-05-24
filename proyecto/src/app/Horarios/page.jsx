@@ -6,7 +6,7 @@ import styles from "../Horarios/page.module.css";
 import { FiX } from "react-icons/fi";
 
 export default function HorarioDocente() {
-  //Funciones para aparecer el menu
+  // Funciones para aparecer el menu
   const [MenuIsVisible, setMenuIsVisible] = useState(false);
 
   function AparecerMenu() {
@@ -19,7 +19,7 @@ export default function HorarioDocente() {
     BarraLateral = <Menu />;
   }
 
-  //Funciones para agregar horarios
+  // Funciones para agregar horarios
   const [horario, setHorario] = useState([]);
   const [dia, setDia] = useState("");
   const [horaInicio, setHoraInicio] = useState("");
@@ -39,6 +39,12 @@ export default function HorarioDocente() {
   };
 
   const agregarHorario = () => {
+    // Verificar si algún campo está vacío
+    if (dia === "" || horaInicio === "" || horaFin === "" || enlace === "") {
+      alert("Por favor, complete todos los campos antes de agregar el horario.");
+      return;
+    }
+
     const nuevoHorario = {
       dia: dia,
       horaInicio: horaInicio,
@@ -82,7 +88,7 @@ export default function HorarioDocente() {
                 value={dia}
                 onChange={(e) => setDia(e.target.value)}
               ></input>
-              <label for="fecha" className={styles.inputLabel}>
+              <label htmlFor="fecha" className={styles.inputLabel}>
                 Día de Semana
               </label>
             </div>
@@ -96,7 +102,7 @@ export default function HorarioDocente() {
                 value={horaInicio}
                 onChange={(e) => setHoraInicio(e.target.value)}
               ></input>
-              <label for="inicio" className={styles.inputLabel}>
+              <label htmlFor="inicio" className={styles.inputLabel}>
                 Hora de Inicio
               </label>
             </div>
@@ -110,7 +116,7 @@ export default function HorarioDocente() {
                 id="fin"
                 onChange={(e) => setHoraFin(e.target.value)}
               ></input>
-              <label for="fin" className={styles.inputLabel}>
+              <label htmlFor="fin" className={styles.inputLabel}>
                 Hora de Fin
               </label>
             </div>
@@ -124,7 +130,7 @@ export default function HorarioDocente() {
                 required
                 id="enlace"
               ></input>
-              <label for="enlace" className={styles.inputLabel}>
+              <label htmlFor="enlace" className={styles.inputLabel}>
                 Enlace de Sesión
               </label>
             </div>
