@@ -30,7 +30,7 @@ const Login = () => {
             </div>
         <Form className='form'>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Coreo o Usuario</Form.Label>
+                <Form.Label>Correo o Usuario</Form.Label>
                 <Form.Control type="email" placeholder="" />
                 
             </Form.Group>
