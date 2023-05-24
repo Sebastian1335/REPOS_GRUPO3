@@ -35,9 +35,12 @@ const Registro = () =>{
     } 
 
     const handleOnClick = () => {
-        
         PersonaApi.save(persona)
         const personas = PersonaApi.getAll()
+        let AUXArray = JSON.parse(localStorage.getItem("personas")) || [];
+        AUXArray.push(persona)
+        let arrayJSON = JSON.stringify(AUXArray)
+        localStorage.setItem("personas",arrayJSON)
         console.log(personas)
     }
 
@@ -87,14 +90,15 @@ const Registro = () =>{
                                     id='doc'
                                     name='doc' value={persona.doc}
                                     onChange={e => setPersona({...persona,doc: e.target.value})}>
-                                    <option className='color'>Tipo de documento</option>
+                                    <option value="" className='color'>***</option>
+
                                     <option value="DNI" className='color'>DNI</option>
                                     <option value="PASAPORTE" className='color'>PASAPORTE</option>
                                 </Form.Select>
                             </FloatingLabel>
                         </Col>
                         <Col>
-                        <FormLabel htmlFor='apellidos' className='color'>apellidos</FormLabel>
+                        <FormLabel htmlFor='apellidos' className='color'>Apellidos</FormLabel>
                             <FormControl type='text' id="apellidos"
                                 value={persona.apellidos}
                                 onChange={e => setPersona({...persona,apellidos: e.target.value})}/>
@@ -108,7 +112,7 @@ const Registro = () =>{
                     </Row>
                     <Row>
                         <Col>
-                        <FloatingLabel className='color' controlId="floatingSelect" label="Works with selects">
+                        <FloatingLabel className='color' controlId="floatingSelect" label="Rol">
                             <Form.Select 
                                 className='color' 
                                 aria-label="Floating label select example"
@@ -116,7 +120,7 @@ const Registro = () =>{
                                 name="rol"
                                 value={persona.rol}
                                 onChange={e => setPersona({...persona,rol: e.target.value})}>
-                                    
+                                    <option value="" className='color'>***</option>
                                     <option value="estudiante" className='color'>Estudiante</option>
                                     <option value="profesor" className='color'>Profesor</option>
                             </Form.Select>
