@@ -30,11 +30,13 @@ const RegistroCita = () => {
 
   const reservarCita = () => {
     if (opcionSeleccionada !== null) {
-      // Realiza cualquier acción que desees al reservar una cita con la opción seleccionada
-      // ...
-  
-      // Redireccionar a la tercera pantalla
-      window.location.href = "/PantallaTres";
+      const citaReservada = filtrarHorarios()[opcionSeleccionada];
+      const storedCitas = localStorage.getItem("citas");
+      let citas = storedCitas ? JSON.parse(storedCitas) : [];
+      citas.push(citaReservada);
+      console.log(citas);
+      localStorage.setItem("citas", JSON.stringify(citas));
+      window.location.href = "/pruebaPagPrincipalAlum";
     } else {
       alert("Por favor, selecciona una opción antes de reservar.");
     }
