@@ -48,7 +48,7 @@ const CitasReservadas = () => {
           border: 1px solid #ccc;
         }
         
-        .citaContainer .iniciales {
+        .citaContainer .numeroCita {
           font-size: 24px;
           font-weight: bold;
         }
@@ -86,10 +86,12 @@ const CitasReservadas = () => {
         {citasPagina.length > 0 ? (
           citasPagina.map((cita, index) => (
             <div key={index} className="citaContainer">
-              <div className="iniciales">{cita.alumno}</div>
+              <div className="numeroCita">
+                {(paginaActual - 1) * citasPorPagina + index + 1}
+              </div>
               <div className="nombre">{cita.alumno}</div>
               <div className="fecha">
-                {cita.fecha} - {cita.hora}
+                {cita.dia} - {cita.horaInicio}
               </div>
             </div>
           ))
