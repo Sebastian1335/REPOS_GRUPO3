@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+
+
+.form{
+  padding-top: 20px;
+}
+
+.iz{
+  justify-content: right;
+}
+
+.spc{
+  display: inline;
+  padding-left:10px;
+}
+
+.letra{
+  font-size: small;
+}
