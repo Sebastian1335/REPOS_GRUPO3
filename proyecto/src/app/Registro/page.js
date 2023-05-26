@@ -66,7 +66,7 @@ const Registro = () =>{
             <div className={styles.container}> 
                 <Container>
                     <Row >
-                        <h3>Sistema de Citas Atencion a Estudiantes</h3>
+                        <h3>Sistema de Citas Atención a Estudiantes</h3>
                         <h4>Pagina de Registro</h4>
                     </Row>
                     <Row className='justify-content-md-center'>
@@ -118,7 +118,7 @@ const Registro = () =>{
                                 value={persona.apellidos}
                                 onChange={e => setPersona({...persona,apellidos: e.target.value})}/>
                         
-                        <FormLabel htmlFor='numero'className={styles.color}>Numero de Documento</FormLabel>
+                        <FormLabel htmlFor='numero'className={styles.color}>Número de Documento</FormLabel>
                             <FormControl type='number' id="numero"
                                 value={persona.numero}
                                 onChange={e => setPersona({...persona,numero: e.target.value})}/>

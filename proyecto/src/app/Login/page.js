@@ -47,7 +47,7 @@ const Login = () => {
     return (
         <div className={styleL.container}>
             <div>
-                <h3>Sistema de citas para Atencion a Estudiantes</h3>
+                <h3>Sistema de citas para Atención a Estudiantes</h3>
             </div>
         <Form className={styleL.form}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
