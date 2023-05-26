@@ -56,6 +56,7 @@ const Registro = () =>{
         let arrayJSON = JSON.stringify(AUXArray)
         localStorage.setItem("personas",arrayJSON)
         console.log(personas)
+        router.push("/Login")
     }
 
 
@@ -146,11 +147,9 @@ const Registro = () =>{
                     </Row>
                     <Row>
                         <Col className='bot d-flex justify-content-end'>
-                            <Link href={"/Login"}>
-                            <Button variant="primary" type="submit" onClick={() => handleOnClick()}>
+                                <Button variant="primary" type="submit" onClick={() => handleOnClick()}>
                                 Ingresar
-                            </Button>
-                            </Link>
+                                </Button>
                         </Col>
                     </Row>
                 </Container>
