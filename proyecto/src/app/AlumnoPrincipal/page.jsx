@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import TopBar from "@/components/TopBar/TopBar";
 import Menu from "@/components/MenuAlumno/Menu";
 import styles from "../AlumnoPrincipal/page.module.css";
+import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
 
 const Alumno = () => {
   //Mostrar nombre
@@ -56,6 +57,7 @@ const Alumno = () => {
   );
 
   return (
+    <PrivateRoute rolesPermitidos={["estudiante"]}>
     <div>
       <TopBar onButtonClick={aparecerMenu}></TopBar>
       <div className={styles.Main}>
@@ -100,6 +102,7 @@ const Alumno = () => {
         <div className={styles.Menu}>{barraLateral}</div>
       </div>
     </div>
+    </PrivateRoute>
   );
 };
 
