@@ -1,13 +1,16 @@
 'use client';
 
+import styleL from '../../../src/app/Login/styleL.module.css'
+
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Stack from 'react-bootstrap/Stack';
-import Link from '../../components/Link/Link.jsx'
+/*import Link from '../../components/Link/Link.jsx'*/
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from "next/link"
 
-import style from '../Login/styleL.css'
+
 
 const Login = () => {
 
@@ -43,11 +46,11 @@ const Login = () => {
     }
 
     return (
-        <div className='container'>
+        <div className={styleL.container}>
             <div>
                 <h3>Sistema de citas para Atencion a Estudiantes</h3>
             </div>
-        <Form className='form'>
+        <Form className={styleL.form}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Correo</Form.Label>
                 <Form.Control type="text" placeholder="" value={usuario} onChange={(e) => setUsuario(e.target.value)}/>
@@ -58,20 +61,21 @@ const Login = () => {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <Form.Text className="text-muted" >
-                    <button type="button" class="btn btn-link" to="/Registro">
-                        <Link href="/Registro" text="Registro de nuevo usuario" /> 
-                    </button>
-                    <button type="button" class="btn btn-link"> 
-                        <Link href="/app/page.js" text="Olvide mi contraseña" />
-                    </button> 
+                    
+                        <Link href={"/Registro"}> Registro de nuevo usuario</Link> 
+                    
+                     
+                    
                 </Form.Text>
             </Form.Group>
-            <div className='iz'>
-                
-                <Button variant="primary" type="button" class="btn btn-outline-primary">
+            <div className={styleL.iz}>
+            <div className={styleL.spc}>
+                <Link href={"/"}>
+                <Button variant="primary" type="button">
                     Salir
                 </Button>
-                <div className='spc'>
+                </Link>
+                
                 
                 <Button variant="primary" type="button" onClick={handleClick}>
                     Ingresar
