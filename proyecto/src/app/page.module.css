@@ -1,5 +1,5 @@
 .fondo {
   background-image: url(../../public/images/fondo.jpg);
   background-size: cover;
-  height: calc(100vh - 160px)!important;
+  height: calc(100vh - 80px)!important;
 }
