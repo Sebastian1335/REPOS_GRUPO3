@@ -58,50 +58,53 @@ const Alumno = () => {
 
   return (
     <PrivateRoute rolesPermitidos={["estudiante"]}>
-    <div>
-      <TopBar onButtonClick={aparecerMenu}></TopBar>
-      <div className={styles.Main}>
-        <div className={styles.Info}>
-          <h2>Bienvenido, {nombreUsuario}!</h2>
-          <hr />
-          <div className={styles.Fondo}>
-            <h2>Próximas Citas</h2>
-            <div className="container">
-              {citasPagina.length > 0 ? (
-                citasPagina.map((cita, index) => (
-                  <div key={index} className="citaContainer">
-                    <div className="numeroCita">
-                      {(paginaActual - 1) * citasPorPagina + index + 1}
-                    </div>
-                    <div className="nombre">{cita.alumno}</div>
-                    <div className="fecha">
-                      {cita.dia} - {cita.horaInicio}
-                    </div>
+      <div>
+        <TopBar onButtonClick={aparecerMenu}></TopBar>
+        <div className={styles.Main}>
+          <div className={styles.Info}>
+            <h2>Bienvenido, {nombreUsuario}!</h2>
+            <hr />
+            <div className={styles.Fondo}>
+              <h2>Próximas Citas</h2>
+              <div className={styles.container}>
+                {citasPagina.length > 0 ? (
+                  <div className={styles.citasGrid}>
+                    {citasPagina.map((cita, index) => (
+                      <div key={index} className={styles.citaContainer}>
+                        <div className={styles.numeroCita}>
+                          {(paginaActual - 1) * citasPorPagina + index + 1}
+                        </div>
+                        <div className={styles.infoCita}>
+                          El {cita.dia} de {cita.horaInicio} a {cita.horaFin}
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))
-              ) : (
-                <p>No tienes citas reservadas</p>
-              )}
-              {totalPaginas > 1 && (
-                <div className="pagination">
-                  {Array.from({ length: totalPaginas }, (_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => cambiarPagina(index + 1)}
-                      className={paginaActual === index + 1 ? "active" : ""}
-                    >
-                      {index + 1}
-                    </button>
-                  ))}
-                </div>
-              )}
+                ) : (
+                  <p>No tienes citas reservadas</p>
+                )}
+                {totalPaginas > 1 && (
+                  <div className={styles.pagination}>
+                    {Array.from({ length: totalPaginas }, (_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => cambiarPagina(index + 1)}
+                        className={`${
+                          paginaActual === index + 1 ? styles.active : ""
+                        } ${styles.paginationButton}`}
+                      >
+                        {index + 1}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className={styles.Menu}>{barraLateral}</div>
+          <div className={styles.Menu}>{barraLateral}</div>
+        </div>
       </div>
-    </div>
     </PrivateRoute>
   );
 };
