@@ -11,8 +11,8 @@ const Alumno = () => {
   const [nombreUsuario, setNombreUsuario] = useState("");
 
   useEffect(() => {
-    const nombre = localStorage.getItem("nombreUsuario");
-    setNombreUsuario(nombre);
+    const nombreUsuario = localStorage.getItem("nombreUsuario");
+    setNombreUsuario(nombreUsuario);
   }, []);
 
   //Mostrar Menu
