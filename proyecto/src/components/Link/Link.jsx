@@ -1,8 +1,17 @@
 import NextLink from 'next/link';
+import { useRouter } from 'next/navigation'
+
+
 
 const Link = ({href, text}) => {
+
+    const handleClick = () =>{
+        const Router = useRouter()
+        Router.push("/Registro")
+    }
+
     return (
-        <NextLink href={href}>{text}</NextLink>
+        <button onClick={() => handleClick()}>{text}</button>
     )
 }
 
