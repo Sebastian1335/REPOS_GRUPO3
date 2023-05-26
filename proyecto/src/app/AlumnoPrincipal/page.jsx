@@ -1,30 +1,39 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
+import { useRouter } from 'next/navigation';
 import TopBar from '@/components/TopBar/TopBar';
 import Menu from '@/components/MenuAlumno/Menu';
 import styles from '../AlumnoPrincipal/page.module.css'
 
 
 const Alumno = () => {
-    const [MenuIsVisible, setMenuIsVisible] = useState(false);
+    const router = useRouter();
+    const [nombreUsuario, setNombreUsuario] = useState('');
+
+    const [menuIsVisible, setMenuIsVisible] = useState(false);
     
-    function AparecerMenu()
+    function aparecerMenu()
     {
-        setMenuIsVisible(!MenuIsVisible)
+        setMenuIsVisible(!menuIsVisible)
     }
 
-    let BarraLateral;
+    let barraLateral;
 
-    if (MenuIsVisible){
-        BarraLateral = <Menu/>
+    if (menuIsVisible){
+        barraLateral = <Menu/>
     }
+
+    useEffect(() => {
+        const nombre = localStorage.getItem('nombreUsuario');
+        setNombreUsuario(nombre);
+    }, []);
     
     return (
         <div>
-            <TopBar onButtonClick={AparecerMenu}></TopBar>
+            <TopBar onButtonClick={aparecerMenu}></TopBar>
             <div className={styles.Main}>
                 <div className={styles.Info}>
-                    <h2>Bienvenido, (Nombre)!</h2>
+                    <h2>Bienvenido, {nombreUsuario}!</h2>
                     <hr/>  
                     <div className={styles.Fondo}>
                         <h2>Próximas Citas</h2>
@@ -32,7 +41,7 @@ const Alumno = () => {
                 </div>
 
                 <div className={styles.Menu}>
-                    {BarraLateral}
+                    {barraLateral}
                 </div>
             </div>
         </div>
