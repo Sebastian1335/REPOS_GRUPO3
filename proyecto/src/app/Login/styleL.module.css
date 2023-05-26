@@ -23,3 +23,8 @@
 .letra{
   font-size: small;
 }
+
+.btn {
+  justify-content: space-around;
+  display: flex;
+}
