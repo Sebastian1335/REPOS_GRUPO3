@@ -28,7 +28,21 @@ const Perfil = () => {
     horaFin: "",
     sesionLink: "",
   });
-  const [error, setError] = useState("");
+
+
+  const[Nombres,setNombres] = useState("");
+  const[Apellidos,setApellidos] = useState("");
+  const[TipoDocu,setTipoDocu] =useState("");
+  const[Rol,setRol] =useState("");
+  const[Numero,setNumero] =useState("");
+
+
+
+  const[Usuario,setUsuario] = useState("");
+  const[ContraActual,setContraAc] = useState("");
+  const[NuevaContra,setNuevaContra] =useState("");
+  const[RepContra,setRepContra] = useState("");
+  
 
   useEffect(() => {
     const storedSchedule = localStorage.getItem("schedule");
@@ -124,8 +138,8 @@ const   Presentaciont= ()  =>{
                             id="Nombre"
                             type="text"
                             name="Nombres"
-                            value={newSchedule.diaSemana}
-                            onChange={handleInputChange}
+                            value={Nombres}
+                            onChange={e => setNombres(e.target.value)}
                           ></input>
                           <label for="dia" className={styles.inputLabel}>
                             Nombres
@@ -142,8 +156,8 @@ const   Presentaciont= ()  =>{
                           id="Apellidos"
                           type="text"
                           name="apellidos"
-                          value={newSchedule.horaInicio}
-                          onChange={handleInputChange}>
+                          value={Apellidos}
+                          onChange={e => setApellidos(e.target.value)}>
                           </input>
                           <label for="inicio" className={styles.inputLabel}>
                               Apellidos
@@ -157,8 +171,8 @@ const   Presentaciont= ()  =>{
                           id="Documento"
                           type="text"
                           name="documento"
-                          value={newSchedule.horaFin}
-                          onChange={handleInputChange}>
+                          value={TipoDocu}
+                          onChange={e => setTipoDocu(e.target.value)}>
                           </input>
                          <label for="fin" className={styles.inputLabel}>
                           Tipos de Documento
@@ -175,8 +189,8 @@ const   Presentaciont= ()  =>{
                             id="Rol"
                             type="text"
                             name="rol"
-                            value={newSchedule.horaFin}
-                            onChange={handleInputChange}>
+                            value={Rol}
+                            onChange={e => setRol(e.target.value)}>
                             </input>
                           <label for="fin" className={styles.inputLabel}>
                             Rol
@@ -190,8 +204,8 @@ const   Presentaciont= ()  =>{
                             id="Numero"
                             type="text"
                             name="numero"
-                            value={newSchedule.horaFin}
-                            onChange={handleInputChange}>
+                            value={Numero}
+                            onChange={e => setNumero(e.target.value)}>
                             </input>
                           <label for="fin" className={styles.inputLabel}>
                             Número
@@ -235,8 +249,8 @@ const   Presentaciont= ()  =>{
                               id="dia"
                               type="text"
                               name="diaSemana"
-                              value={newSchedule.diaSemana}
-                              onChange={handleInputChange}>
+                              value={Usuario}
+                              onChange={e => setUsuario(e.target.value)}>
                             </input>
                             <label for="dia" className={styles.inputLabel}>
                               Usuario
@@ -255,8 +269,8 @@ const   Presentaciont= ()  =>{
                             className={styles.input}
                             required
                             id="enlace"
-                            value={newSchedule.sesionLink}
-                            onChange={handleInputChange}
+                            value={ContraActual}
+                            onChange={e => setContraAc(e.target.value)}
                           ></input>
                           <label for="enlace" className={styles.inputLabel}>
                             Contraseña Actual
@@ -270,8 +284,8 @@ const   Presentaciont= ()  =>{
                             id="inicio"
                             type="text"
                             name="horaInicio"
-                            value={newSchedule.horaInicio}
-                            onChange={handleInputChange}>
+                            value={NuevaContra}
+                            onChange={e => setNuevaContra(e.target.value)}>
                           </input>
                           <label for="inicio" className={styles.inputLabel}>
                             Nueva Contraseña
@@ -285,8 +299,8 @@ const   Presentaciont= ()  =>{
                             id="fin"
                             type="text"
                             name="horaFin"
-                            value={newSchedule.horaFin}
-                            onChange={handleInputChange}>
+                            value={RepContra}
+                            onChange={e => setRepContra(e.target.value)}>
                           </input>
                           <label for="fin" className={styles.inputLabel}>
                             Repetir Contraseña
