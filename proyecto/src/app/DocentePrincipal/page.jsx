@@ -7,9 +7,25 @@ import styles from '../DocentePrincipal/page.module.css'
 
 
 const Docente = () => {
+    //Aparecer nombre en la pantalla y verificar rol
     const router = useRouter();
-    const [nombreUsuario, setNombreUsuario] = useState('');
     
+    const [nombreUsuario, setNombreUsuario] = useState('');
+    const rol = localStorage.getItem('rolUsuario');
+    
+    useEffect(() => {
+        const nombre = localStorage.getItem('nombreUsuario');
+        const rol = localStorage.getItem('rolUsuario');
+    
+        if (rol !== 'docente') {
+          // Redireccionar a otra página si el rol no está permitido
+          router.push('/acceso-denegado');
+        } else {
+          setNombreUsuario(nombre);
+        }
+    }, []);
+    
+    //Aparecer Menu lateral
     const [menuIsVisible, setMenuIsVisible] = useState(false);
     
     function aparecerMenu()
@@ -22,12 +38,6 @@ const Docente = () => {
     if (menuIsVisible){
         barraLateral = <Menu/>
     }
-
-    useEffect(() => {
-        const nombre = localStorage.getItem('nombreUsuario');
-        setNombreUsuario(nombre);
-    }, []);
-    
     
     return (
         <div>

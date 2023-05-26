@@ -32,7 +32,10 @@ const Login = () => {
         }
 
         if (foundusuario){
+            //Conseguir el dato de nombres
             localStorage.setItem('nombreUsuario', foundusuario.nombres);
+            //Conseguir el dato de rol
+            localStorage.setItem('nombreUsuario', foundusuario.rol);
             if (FoundRol === 'profesor'){
                 router.push('/DocentePrincipal')
             }else{
