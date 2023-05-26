@@ -7,9 +7,17 @@ import styles from '../DocentePrincipal/page.module.css'
 
 
 const Docente = () => {
+    //Aparecer nombre en la pantalla
     const router = useRouter();
-    const [nombreUsuario, setNombreUsuario] = useState('');
     
+    const [nombreUsuario, setNombreUsuario] = useState('');
+
+    useEffect(() => {
+        const nombreUsuario = localStorage.getItem('nombreUsuario');
+        setNombreUsuario(nombreUsuario);
+    }, []);
+    
+    //Aparecer Menu
     const [menuIsVisible, setMenuIsVisible] = useState(false);
     
     function aparecerMenu()
@@ -22,12 +30,6 @@ const Docente = () => {
     if (menuIsVisible){
         barraLateral = <Menu/>
     }
-
-    useEffect(() => {
-        const nombre = localStorage.getItem('nombreUsuario');
-        setNombreUsuario(nombre);
-    }, []);
-    
     
     return (
         <div>
