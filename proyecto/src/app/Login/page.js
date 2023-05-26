@@ -31,8 +31,6 @@ const Login = () => {
             FoundRol = foundusuario.rol
         }
 
-    
-
         if (foundusuario){
             if (FoundRol === 'profesor'){
                 router.push('/DocentePrincipal')

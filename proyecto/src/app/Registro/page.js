@@ -13,6 +13,7 @@ import { FormControl, FormLabel } from 'react-bootstrap'
 import PersonaApi from '@/api/persona.js'
 
 const Registro = () =>{
+    const router = useRouter();
     const [showDatosPersona, setShowDatosPersona ] = useState(true)
 
     const defaultPersona = {
@@ -36,6 +37,18 @@ const Registro = () =>{
     } 
 
     const handleOnClick = () => {
+        if (persona.contraseña1 !== persona.contraseña2) {
+            alert("Las contraseñas no coinciden");
+            return;
+        }
+          
+        if (Object.values(persona).some(value => value === "")) {
+            alert("Por favor, complete todos los campos");
+            return;
+        }
+      
+        router.push('/');
+
         PersonaApi.save(persona)
         const personas = PersonaApi.getAll()
         let AUXArray = JSON.parse(localStorage.getItem("personas")) || [];
