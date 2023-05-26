@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useEffect } from "react";
 import TopBar from '@/components/TopBar/TopBar';
 import Menu from '@/components/MenuAlumno/Menu';
-import styles from '../Perfil/page.module.css';
+import styles from '../Perfil-Docente/page.module.css';
 import { Button, Container, FormControl, FormLabel } from "react-bootstrap";
 //import Button from '../../components/Button/Button.jsx';
 const Perfil = () => {
