@@ -1,90 +1,91 @@
-'use client';
+"use client";
 
-import styleL from '../../../src/app/Login/styleL.module.css'
+import styleL from "../../../src/app/Login/styleL.module.css";
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import Stack from 'react-bootstrap/Stack';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Stack from "react-bootstrap/Stack";
 /*import Link from '../../components/Link/Link.jsx'*/
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import Link from "next/link"
-
-
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Login = () => {
+  const [usuario, setUsuario] = useState("");
+  const [password, setPassword] = useState("");
 
-    const [usuario, setUsuario] = useState('')
-    const [password, setPassword] = useState('')
+  const router = useRouter();
 
-    const router = useRouter()
-
-    const handleClick = () => {
-
-        const data = JSON.parse(localStorage.getItem('personas'))
-        let foundusuario = null
-        let FoundRol = null
-        if (data) {
-            foundusuario = data.find(
-                (item) => item.correo === usuario && item.contraseña1 === password
-                )
-            FoundRol = foundusuario.rol
-        }
-
-        if (foundusuario){
-            localStorage.setItem('nombreUsuario', foundusuario.nombres);
-            localStorage.setItem('rolUsuario', foundusuario.rol);
-            if (FoundRol === 'profesor'){
-                router.push('/DocentePrincipal')
-            }else{
-                router.push('/AlumnoPrincipal')
-            }
-        }else{
-            alert('Usuario o password incorrecto')
-        }
-            
+  const handleClick = () => {
+    const data = JSON.parse(localStorage.getItem("personas"));
+    let foundusuario = null;
+    let FoundRol = null;
+    if (data) {
+      foundusuario = data.find(
+        (item) => item.correo === usuario && item.contraseña1 === password
+      );
+      FoundRol = foundusuario.rol;
     }
 
-    return (
-        <div className={styleL.container}>
-            <div>
-                <h3>Sistema de citas para Atención a Estudiantes</h3>
-            </div>
-        <Form className={styleL.form}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Correo</Form.Label>
-                <Form.Control type="text" placeholder="" value={usuario} onChange={(e) => setUsuario(e.target.value)}/>
-                
-            </Form.Group>
+    if (foundusuario) {
+      localStorage.setItem("nombreUsuario", foundusuario.nombres);
+      localStorage.setItem("rolUsuario", foundusuario.rol);
+      if (FoundRol === "profesor") {
+        router.push("/DocentePrincipal");
+      } else {
+        router.push("/AlumnoPrincipal");
+      }
+    } else {
+      alert("Usuario o password incorrecto");
+    }
+  };
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                <Form.Text className="text-muted" >
-                    
-                        <Link href={"/Registro"}> Registro de nuevo usuario</Link> 
-                    
-                     
-                    
-                </Form.Text>
-            </Form.Group>
-            <div className={styleL.iz}>
-            <div className={styleL.spc}>
-                <Link href={"/"}>
+  return (
+    <div className={styleL.container}>
+      <div>
+        <h3>Sistema de citas para Atención a Estudiantes</h3>
+      </div>
+      <Form className={styleL.form}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Correo</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder=""
+            value={usuario}
+            onChange={(e) => setUsuario(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder=""
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Form.Text className="text-muted">
+            <Link href={"/Registro"}> Registro de nuevo usuario</Link>
+          </Form.Text>
+        </Form.Group>
+        <div className={styleL.iz}>
+          <div className={styleL.spc}>
+            <div className={styleL.btn}>
+              <Link href={"/"}>
                 <Button variant="primary" type="button">
-                    Salir
+                  Salir
                 </Button>
-                </Link>
-                
-                
-                <Button variant="primary" type="button" onClick={handleClick}>
-                    Ingresar
-                </Button>
-                </div>
+              </Link>
+              
+              <Button variant="primary" type="button" onClick={handleClick}>
+                Ingresar
+              </Button>
             </div>
-    </Form>
+          </div>
+        </div>
+      </Form>
     </div>
-    )
-} 
+  );
+};
 
-export default Login
+export default Login;
