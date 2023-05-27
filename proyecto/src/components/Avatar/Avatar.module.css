@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.container .addIcon {
+  width: 50px;
+  height: 50px;
+}
+
+.container input {
+  display: none;
+}
+
+.container .imgContainer {
+  margin-top: 30px;
+  border-radius: 50%;
+  border: 3px solid black;
+}
+
+.container .imgContainer img {
+  display: block;
+  border-radius: 50%;
+}
