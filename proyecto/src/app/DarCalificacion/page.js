@@ -12,14 +12,6 @@ const Calificacion = () => {
       const value = parseFloat(event.target.value);
       setCalificacion(value);
     };
-    
-    const defaultCalificacion = {
-        nombres: "",
-        apellidos: "",
-        estrellas: 0.0,
-        descripcion: ""
-    }
-
 
 
     const handleSubmit = (event) => {
@@ -37,9 +29,7 @@ const Calificacion = () => {
 
     useEffect(() => {
         const nombreUsuario = localStorage.getItem("nombreUsuario");
-        const apellidoUsuario = localStorage.getItem("apellidoUsuario")
         setNombreUsuario(nombreUsuario);
-        setApellidoUsuario(apellidoUsuario)
       }, []);
 
     return (
