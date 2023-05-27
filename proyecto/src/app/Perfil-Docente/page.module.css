@@ -109,7 +109,7 @@
   display: flex;
   flex-direction: column;
   padding: 0 20px;
-  background-color: lawngreen;
+  background-color: white;
 }
 .boxes {
   display: block;

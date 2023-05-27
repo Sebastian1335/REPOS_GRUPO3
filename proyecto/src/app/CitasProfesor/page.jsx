@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import TopBar from "@/components/TopBar/TopBar";
 import Menu from "@/components/MenuAlumno/Menu";
 import styles from "./page.module.css";
-import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
@@ -24,7 +23,6 @@ const CitaProfesor = () => {
   }
 
   return (
-    <PrivateRoute rolesPermitidos={["profesor"]}>
       <div>
         <TopBar onButtonClick={aparecerMenu}></TopBar>
         <div className={styles.Main}>
@@ -136,7 +134,6 @@ const CitaProfesor = () => {
           <div className={styles.Menu}>{barraLateral}</div>
         </div>
       </div>
-    </PrivateRoute>
   );
 };
 

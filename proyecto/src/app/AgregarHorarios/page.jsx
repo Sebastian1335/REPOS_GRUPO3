@@ -19,7 +19,7 @@ export default function HorarioDocente() {
     BarraLateral = <Menu />;
   }
 
-  // Funciones para agregar horarios
+  // Constantes para agregar horarios
   const [horario, setHorario] = useState([]);
   const [dia, setDia] = useState("");
   const [horaInicio, setHoraInicio] = useState("");
