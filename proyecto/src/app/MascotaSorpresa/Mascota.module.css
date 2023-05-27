@@ -1,0 +1,50 @@
+.animalImage {
+    height: 150px;
+    display: flex;
+}
+
+.contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 25%;
+    height: 20%;
+}
+
+.btn {
+    background-color: rgb(204, 115, 204);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.sorpresa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.nombre {
+    text-transform: uppercase;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.frase {
+    text-align: center;
+    padding: 5px;
+    max-width: 50%;
+}
+
+.titulo {
+    font-size:larger;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(129, 113, 143);
+    text-align: center;
+}
