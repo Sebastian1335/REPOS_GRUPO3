@@ -48,7 +48,7 @@ export default function ResumenCalificaciones() {
     }, [])
   
     return (
-        <div>
+        <><div>
           <TopBar onButtonClick={AparecerMenu}></TopBar>
           <div className={styles.Main}>
             <div className={styles.Info}>
@@ -67,6 +67,6 @@ export default function ResumenCalificaciones() {
     
             <div className={styles.Menu}>{BarraLateral}</div>
           </div>
-        </div>
+        </div></>
       );
     }
