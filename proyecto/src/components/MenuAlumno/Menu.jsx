@@ -6,7 +6,7 @@ const Menu = () => {
     <div>
       <div className={styles.Sidebar}>
         <Link href="/AlumnoPrincipal">Principal</Link>
-        <Link href="/perfil">Perfil</Link>
+        <Link href="/Perfil-Alumno">Perfil</Link>
         <Link href="/CitasAlumnos">Citas</Link>
       </div>
     </div>

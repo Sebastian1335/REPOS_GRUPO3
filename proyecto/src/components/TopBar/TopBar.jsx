@@ -10,9 +10,9 @@ const TopBar = ({ onButtonClick }) => {
   const rolUsuario = localStorage.getItem("rolUsuario");
   const handleProfileClick = () => {
     if (rolUsuario === "profesor") {
-      router.push("/PerfilDocente");
+      router.push("/Perfil-Docente");
     } else if (rolUsuario === "estudiante") {
-      router.push("/PerfilAlumno");
+      router.push("/Perfil-Alumno");
     } else {
       alert("Rol de usuario no válido");
     }
