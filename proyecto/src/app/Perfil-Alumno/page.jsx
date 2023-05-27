@@ -149,7 +149,7 @@ const Perfil = () => {
                       value={Apellidos}
                       onChange={(e) => setApellidos(e.target.value)}
                     ></input>
-                    <label for="inicio" className={styles.inputLabyles.
+                    <label for="inicio" className={styles.inputLabel}>
                       Apellidos
                     </label>
                   </div>
@@ -202,9 +202,7 @@ const Perfil = () => {
                 </div>
               </div>
 
-              <div className={styles.foto}>
-                <Avatar></Avatar>
-              </div>
+              <div className={styles.foto}></div>
             </div>
 
             <hr></hr>
