@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import Chip from '../../components/Chip/Chip.jsx'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import styles2 from '../Busqueda-docente/page.Busqueda.docente.css'
+import styles2 from './page.Busqueda.docente.css'
 import Pagination from 'react-bootstrap/Pagination';
 
 

@@ -36,7 +36,7 @@ const RegistroCita = () => {
       citas.push(citaReservada);
       console.log(citas);
       localStorage.setItem("citas", JSON.stringify(citas));
-      window.location.href = "/pruebaPagPrincipalAlum";
+      window.location.href = "/AlumnoPrincipal";
     } else {
       alert("Por favor, selecciona una opción antes de reservar.");
     }

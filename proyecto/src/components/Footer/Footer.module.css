@@ -1,0 +1,16 @@
+.footer {
+    background-color: #d7cfe9;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footerLogo {
+    height: 60px;
+}
+
+.footerInfo {
+    font-size: smaller;
+    font-style: italic;
+}
