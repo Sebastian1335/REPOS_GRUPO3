@@ -1,298 +1,257 @@
 .Main {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-    
-  }
-  
-  .Info {
-    padding: 4%;
-    padding-top: 30px;
-    width: -webkit-fill-available;
-    
-  }
-  
-  .Fondo {
-    padding: 15px;
-    padding-top: 0px;
-    
-    
-  }
-  
-  .inputGroup {
-    position: relative;
-    margin: 15px;
-    margin-top: 25px;
-  
-  }
-  
-  .input {
-    padding: 1px 4px;
-    height: 40px;
-    width: 230px;
-    border: none;
-    border-radius: 4px;
-    font: inherit;
-    color: black;
-    background-color: transparent;
-    outline: 2px solid black;
-  }
-  
-  .inputLabel {
-    position: absolute;
-    font-size: smaller;
-    color: rgb(109, 108, 108);
-    left: 0;
-    top: 2px;
-    transform: translate(10px, 10px);
-    transition: transform 0.25s;
-  }
-  
-  .input:focus + .inputLabel,
-  .input:valid + .inputLabel {
-    transform: translate(2px, -14px) scale(0.8);
-    color: #684fa5;
-    padding-inline: 5px;
-    background-color: white;
-    border-right: 4px;
-    border: 3px solid #fff;
-    border-top: none;
-    border-bottom: none;
-  }
-  
-  .input:is(:valid, :focus) {
-    outline-color: #684fa5;
-  }
-  
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
 
-  
-  .BtnAceptar {
-    background-color: white;
-    border: 1px solid #684fa5;
-    color: #684fa5;
-    padding: 10px 27px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 50px;
-    margin-top: 20px;
-  }
-  
-  .BtnAceptar:hover {
-    background-color: #684fa5;
-    color: white;
-  }
-  
-  .scheduleContainer {
-    margin-top: 20px;
-  }
-  
-  .scheduleItem {
-    display: flex;
-    justify-content: space-around;
-    background-color: purple;
-    color: white;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-  }
+.Info {
+  padding: 4%;
+  padding-top: 30px;
+  width: -webkit-fill-available;
+}
 
+.Fondo {
+  padding: 15px;
+  padding-top: 0px;
+}
 
-  
-  .Guardar{
-    display: flex;
-    flex-direction: row;
-  }
-  .Guardar h2{
-    width: 80%;
-  }
-  .botones{
-    display: flex;
-  }
-  .botones Button{
-    margin: 0 5px;
-  }
+.inputGroup {
+  position: relative;
+  margin: 15px;
+  margin-top: 25px;
+}
 
-  .contInfo{
-    display:flex;
-    flex-direction: column;
-    padding: 0 20px;
-    background-color: lawngreen;
-    
+.input {
+  padding: 1px 4px;
+  height: 40px;
+  width: 230px;
+  border: none;
+  border-radius: 4px;
+  font: inherit;
+  color: black;
+  background-color: transparent;
+  outline: 2px solid black;
+}
 
-    
-  }
-  .boxes{
-    display: block;
-  }
-  .labels{
-    display: flex;
-    flex-direction: row;
-  
-  }
+.inputLabel {
+  position: absolute;
+  font-size: smaller;
+  color: rgb(109, 108, 108);
+  left: 0;
+  top: 2px;
+  transform: translate(10px, 10px);
+  transition: transform 0.25s;
+}
 
-  .container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    text-align: center;
-    margin: 20px 0 40px;
-    
-  }
+.input:focus + .inputLabel,
+.input:valid + .inputLabel {
+  transform: translate(2px, -14px) scale(0.8);
+  color: #684fa5;
+  padding-inline: 5px;
+  background-color: white;
+  border-right: 4px;
+  border: 3px solid #fff;
+  border-top: none;
+  border-bottom: none;
+}
 
-.foto{
-  width: 200px;
-  height: 150px;
-  background-image: url(../../../public/images/perfil.png);
-  background-size: cover;
-  }
+.input:is(:valid, :focus) {
+  outline-color: #684fa5;
+}
 
-.forms1{
+.BtnAceptar {
+  background-color: white;
+  border: 1px solid #684fa5;
+  color: #684fa5;
+  padding: 10px 27px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 50px;
+  margin-top: 20px;
+}
+
+.BtnAceptar:hover {
+  background-color: #684fa5;
+  color: white;
+}
+
+.scheduleContainer {
+  margin-top: 20px;
+}
+
+.scheduleItem {
+  display: flex;
+  justify-content: space-around;
+  background-color: purple;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.Guardar {
+  display: flex;
+  flex-direction: row;
+}
+.Guardar h2 {
+  width: 80%;
+}
+.botones {
+  display: flex;
+}
+.botones Button {
+  margin: 0 5px;
+}
+
+.contInfo {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  background-color: lawngreen;
+}
+.boxes {
+  display: block;
+}
+.labels {
+  display: flex;
+  flex-direction: row;
+}
+
+.container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  
-  
+  text-align: center;
+  margin: 20px 0 40px;
 }
 
-
-.forms2{
+.forms1 {
   display: flex;
   flex-direction: row;
-  
+  justify-content: space-evenly;
 }
 
+.forms2 {
+  display: flex;
+  flex-direction: row;
+}
 
-.renderbox{
+.renderbox {
   padding: 40px 0;
   height: 320px;
-  background-color: #F3EEF6;
+  background-color: #f3eef6;
 }
 
-  
-  @media (max-width: 1100px) {
-    .container {
-      display: flex;
-      flex-direction: column-reverse;
-
-    }
-    .forms1{
-      display: flex;
-      flex-direction: column;
-    }
-    .forms2{
-      display: flex;
-      flex-direction: column;
-    }
-    
+@media (max-width: 1100px) {
+  .container {
+    display: flex;
+    flex-direction: column-reverse;
   }
-  .renderbox{
-    padding-top: 0;
-  }
-
-
-  .renderzone{
-    
-    padding-top: 20px;
-    padding-bottom: 50px;
-    padding-left: 20px;
+  .forms1 {
     display: flex;
     flex-direction: column;
   }
-  .DatosUsuario{
-    display: flex;
-    flex-direction: row;
-    
-  }
-  .DatosUsuario2{
-    display: flex;
-    flex-direction: row;
-  }
-
-  .menuboton{
-    padding: 0;
-    background-color: white;
-  }
-  .inputPresentacion{
-    padding: 1px 4px;
-    height: 40px;
-    width: 230px;
-    border: none;
-    border-radius: 4px;
-    font: inherit;
-    color: black;
-    background-color: transparent;
-    outline: 2px solid black;
-
-  }
-  .labelPresentación{
-    padding-top: 20px;
-  }
-  .inputPresentación{
-    padding: 1px 4px;
-    height: 40px;
-    width: 900px;
-    border: none;
-    border-radius: 4px;
-    font: inherit;
-    color: black;
-    background-color: transparent;
-    outline: 2px solid black;
-  }
-
-  .button{
-    padding: 5px;
-    border: none;
-    padding: 10px;
-  }
-  .universidadContainer{
-    display: flex;
-    flex-direction: row;
-    padding-left: 20px;
-    
-  }
-
-  .uniInfo{
+  .forms2 {
     display: flex;
     flex-direction: column;
-    
-    
   }
-  .inputUni{
-    padding: 1px 4px;
-    height: 40px;
-    width: 400px;
-    border: none;
-    border-radius: 4px;
-    font: inherit;
-    color: black;
-    background-color: transparent;
-    outline: 2px solid black;
-  }
-  .uniInfo p{
-   padding: 10px 0;
-  }
-  .inputCursos{
-    padding: 1px 4px;
-    height: 40px;
-    width: 600px;
-    border: none;
-    border-radius: 4px;
-    font: inherit;
-    color: black;
-    background-color: transparent;
-    outline: 2px solid black;
-  }
+}
+.renderbox {
+  padding-top: 0;
+}
 
+.renderzone {
+  padding-top: 20px;
+  padding-bottom: 50px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.DatosUsuario {
+  display: flex;
+  flex-direction: row;
+}
+.DatosUsuario2 {
+  display: flex;
+  flex-direction: row;
+}
 
-.line{
+.menuboton {
+  padding: 0;
+  background-color: white;
+}
+.inputPresentacion {
+  padding: 1px 4px;
+  height: 40px;
+  width: 230px;
+  border: none;
+  border-radius: 4px;
+  font: inherit;
+  color: black;
+  background-color: transparent;
+  outline: 2px solid black;
+}
+.labelPresentación {
+  padding-top: 20px;
+}
+.inputPresentación {
+  padding: 1px 4px;
+  height: 40px;
+  width: 900px;
+  border: none;
+  border-radius: 4px;
+  font: inherit;
+  color: black;
+  background-color: transparent;
+  outline: 2px solid black;
+}
+
+.button {
+  padding: 5px;
+  border: none;
+  padding: 10px;
+}
+.universidadContainer {
+  display: flex;
+  flex-direction: row;
+  padding-left: 20px;
+}
+
+.uniInfo {
+  display: flex;
+  flex-direction: column;
+}
+.inputUni {
+  padding: 1px 4px;
+  height: 40px;
+  width: 400px;
+  border: none;
+  border-radius: 4px;
+  font: inherit;
+  color: black;
+  background-color: transparent;
+  outline: 2px solid black;
+}
+.uniInfo p {
+  padding: 10px 0;
+}
+.inputCursos {
+  padding: 1px 4px;
+  height: 40px;
+  width: 600px;
+  border: none;
+  border-radius: 4px;
+  font: inherit;
+  color: black;
+  background-color: transparent;
+  outline: 2px solid black;
+}
+
+.line {
   background-color: black;
-  height:250px;
+  height: 250px;
   width: 0.5px;
   margin: 0 100px;
-  
- 
- 
-  
 }

@@ -5,6 +5,7 @@ import TopBar from "@/components/TopBar/TopBar";
 import Menu from "@/components/MenuDocente/Menu";
 import styles from "../DocentePrincipal/page.module.css";
 import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
+import Mascota from "../../components/MascotaSorpresa/Mascota"
 
 const Docente = () => {
   //Aparecer nombre en la pantalla
@@ -100,6 +101,10 @@ const Docente = () => {
                 )}
               </div>
             </div>
+            <div className={styles.mascota}>
+            <Mascota></Mascota>
+            </div>
+            
           </div>
 
           <div className={styles.Menu}>{barraLateral}</div>

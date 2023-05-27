@@ -1,0 +1,131 @@
+.Main {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.Info {
+  padding: 4%;
+  width: -webkit-fill-available;
+}
+
+.Fondo {
+  background-color: #f3eef6;
+  padding: 15px;
+}
+
+.inputGroup {
+  position: relative;
+  margin: 5px;
+  margin-top: 15px;
+}
+
+.input {
+  padding: 1px 4px;
+  height: 40px;
+  width: 230px;
+  border: none;
+  border-radius: 4px;
+  font: inherit;
+  color: white;
+  background-color: transparent;
+  outline: 2px solid black;
+}
+
+.inputLabel {
+  position: absolute;
+  font-size: smaller;
+  color: rgb(109, 108, 108);
+  left: 0;
+  top: 2px;
+  transform: translate(10px, 10px);
+  transition: transform 0.25s;
+}
+
+.input:focus + .inputLabel,
+.input:valid + .inputLabel {
+  transform: translate(2px, -14px) scale(0.8);
+  color: #684fa5;
+  padding-inline: 5px;
+  background-color: white;
+  border-right: 4px;
+  border: 3px solid #fff;
+  border-top: none;
+  border-bottom: none;
+}
+
+.input:is(:valid, :focus) {
+  outline-color: #684fa5;
+  color: black;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.BtnAceptar {
+  background-color: white;
+  border: 1px solid #684fa5;
+  color: #684fa5;
+  padding: 10px 27px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 50px;
+  margin-top: 20px;
+}
+
+.BtnAceptar:hover {
+  background-color: #684fa5;
+  color: white;
+}
+
+.horarioContainer {
+  margin-top: 25px;
+  padding: 30px 30px 0 30px;
+}
+
+.horarioItem {
+  display: flex;
+  background-color: #F3EEF6;
+  color: black;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.numeroHorario {
+  background-color: #684FA5;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px; 
+}
+
+.horarioDetalle {
+  flex-grow: 1;
+}
+
+.Btn{
+  border: 0;
+}
+
+@media (min-width: 1000px) {
+  .form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .BtnAceptar {
+    margin-top: 10px;
+  }
+}

@@ -5,6 +5,7 @@ import TopBar from "@/components/TopBar/TopBar";
 import Menu from "@/components/MenuAlumno/Menu";
 import styles from "../Perfil-Docente/page.module.css";
 import { Button, Container, FormControl, FormLabel } from "react-bootstrap";
+import Avatar from "../../components/Avatar/Avatar";
 //import Button from '../../components/Button/Button.jsx';
 const Perfil = () => {
   const [MenuIsVisible, setMenuIsVisible] = useState(false);
@@ -201,7 +202,9 @@ const Perfil = () => {
                 </div>
               </div>
 
-              <div className={styles.foto}></div>
+              <div className={styles.foto}>
+                <Avatar></Avatar>
+              </div>
             </div>
 
             <hr></hr>

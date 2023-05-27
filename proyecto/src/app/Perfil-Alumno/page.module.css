@@ -141,13 +141,6 @@
     
   }
 
-.foto{
-  width: 200px;
-  height: 150px;
-  background-image: url(../../../public/images/perfil.png);
-  background-size: cover;
-  }
-
 .forms1{
   display: flex;
   flex-direction: row;
