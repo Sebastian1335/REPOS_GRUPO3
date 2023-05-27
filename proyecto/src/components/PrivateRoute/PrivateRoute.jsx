@@ -5,7 +5,7 @@ const PrivateRoute = ({ children, rolesPermitidos }) => {
   const router = useRouter();
 
   const isAuthorized = () => {
-    const rolUsuario = localStorage.getItem('rolUsuario');
+    const rolUsuario = localStorage.getItem('rol');
 
     // Verificar si el rol del usuario está permitido para acceder a la página
     return rolesPermitidos.includes(rolUsuario);
@@ -18,7 +18,7 @@ const PrivateRoute = ({ children, rolesPermitidos }) => {
   }, []);
 
   if (!isAuthorized()) {
-    return null; // Opcionalmente, puedes mostrar un mensaje de error o una página de acceso denegado
+    return null;
   }
 
   return children;
