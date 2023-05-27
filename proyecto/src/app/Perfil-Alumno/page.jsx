@@ -149,8 +149,8 @@ const Perfil = () => {
                       value={Apellidos}
                       onChange={(e) => setApellidos(e.target.value)}
                     ></input>
-                    <label for="inicio" className={styles.inputLabyles.
-                      Apellidos}>
+                    <label for="inicio" className={styles.inputLabel}>
+                      Apellidos
                     </label>
                   </div>
 
