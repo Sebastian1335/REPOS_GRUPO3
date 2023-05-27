@@ -14,7 +14,7 @@ import Pagination from 'react-bootstrap/Pagination';
 
 function Busqueda_docente() {
     const [MenuIsVisible, setMenuIsVisible] = useState(false);
-    const frutas = ["Felipe Lopez Jimenez"]
+    const frutas = ["Felipe Lopez Jimenez", "Juanito alcachofa"]
     const [arr, setArr] = useState(frutas)
     const [textBusqueda, setTextBusqueda] = useState("")
     function AparecerMenu() {

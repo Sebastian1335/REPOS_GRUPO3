@@ -1,148 +1,109 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import styles from "../ResumenCalificaciones/page.module.css";
+import Chip from '../../components/Chip/Chip.jsx';
 
-const RegistroCita = () => {
-  const [horariosDisponibles, setHorariosDisponibles] = useState([]);
-  const [fechaSeleccionada, setFechaSeleccionada] = useState("");
-  const [opcionSeleccionada, setOpcionSeleccionada] = useState(null);
-
-  useEffect(() => {
-    obtenerHorariosDisponibles();
-  }, []);
-
-  const obtenerHorariosDisponibles = () => {
-    const storedHorario = localStorage.getItem("horario");
-    if (storedHorario) {
-      const horario = JSON.parse(storedHorario);
-      setHorariosDisponibles(horario);
+export default function pruebaReserva(){
+    // Funciones para aparecer el menu
+    const [MenuIsVisible, setMenuIsVisible] = useState(false);
+    
+    function AparecerMenu() {
+      setMenuIsVisible(!MenuIsVisible);
     }
-  };
+  
+    let BarraLateral;
+  
+    if (MenuIsVisible) {
+      BarraLateral = <Menu />;
+    }
 
-  const filtrarHorarios = () => {
-    if (fechaSeleccionada === "") {
-      return horariosDisponibles;
-    } else {
+    //Otras funciones
+    const [horariosDisponibles, setHorariosDisponibles] = useState([]);
+    const [opcionSeleccionada, setOpcionSeleccionada] = useState(null);
+    const [busqFecha, setBusqFecha] = useState("");
+    const [busqCurso, setBusqCurso] = useState("");
+    
+    useEffect(() => {
+      obtenerHorariosDisponibles();
+    }, []);
+    
+    const obtenerHorariosDisponibles = () => {
+      const storedHorario = localStorage.getItem("horario");
+      if (storedHorario) {
+        setHorariosDisponibles(JSON.parse(storedHorario));
+        console.log(JSON.parse(storedHorario))
+      }
+    };
+    
+    const filtrarHorarios = () => {
       return horariosDisponibles.filter(
-        (horario) => horario.dia === fechaSeleccionada
+        (h) => ((h.dia === busqFecha || busqFecha==="") && (h.curso === busqCurso || busqCurso===""))
       );
-    }
-  };
+    };
+    
+    const reservarCita = () => {
+      if (opcionSeleccionada !== null){
+        const citaReservada = filtrarHorarios()[opcionSeleccionada];
+        const storedCitas = localStorage.getItem("citas");
+        let citas = storedCitas ? JSON.parse(storedCitas) : [];
+        citas.push(citaReservada);
+        console.log(citas);
+        console.log("separación");
+        localStorage.setItem("citas", JSON.stringify(citas));
+        window.location.href = "/AlumnoPrincipal";
+      }else{
+        alert("https://www.youtube.com/watch?v=N025nnrcGrc&t=139s");
+      }
+    };
 
-  const reservarCita = () => {
-    if (opcionSeleccionada !== null) {
-      const citaReservada = filtrarHorarios()[opcionSeleccionada];
-      const storedCitas = localStorage.getItem("citas");
-      let citas = storedCitas ? JSON.parse(storedCitas) : [];
-      citas.push(citaReservada);
-      console.log(citas);
-      localStorage.setItem("citas", JSON.stringify(citas));
-      window.location.href = "/AlumnoPrincipal";
-    } else {
-      alert("Por favor, selecciona una opción antes de reservar.");
+    const cambiarFecha = (fecha) => {
+      setOpcionSeleccionada(null);
+      setBusqFecha(fecha);
     }
-  };
 
-  return (
-    <div>
-      <style>
-        {`
-        .container {
-          text-align: center;
-        }
-        
-        h1 {
-          margin-top: 20px;
-        }
-        
-        label {
-          display: block;
-          margin-top: 20px;
-        }
-        
-        input[type="date"] {
-          margin-bottom: 20px;
-        }
-        
-        .horarioItem {
-          display: inline-block;
-          margin: 10px;
-          padding: 10px;
-          border: 1px solid #ccc;
-          cursor: pointer;
-        }
-        
-        .horarioItem.selected {
-          background-color: #e0e0e0;
-        }
-        
-        .numeroHorario {
-          font-size: 18px;
-          font-weight: bold;
-        }
-        
-        .horarioDetalle {
-          margin-top: 5px;
-        }
-        
-        .reservarBtn {
-          display: block;
-          margin-top: 20px;
-          padding: 10px 20px;
-          background-color: #007bff;
-          color: #fff;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-        
-        .reservarBtn:hover {
-          background-color: #0056b3;
-        }
-      `}
-      </style>
-      <div className="container">
-        <h1>Reserva de Citas</h1>
-        <div>
-          <label>Fecha:</label>
-          <input
-            type="date"
-            value={fechaSeleccionada}
-            onChange={(e) => setFechaSeleccionada(e.target.value)}
-          />
-        </div>
-        <div>
-          <h2>Horarios Disponibles</h2>
-          {filtrarHorarios().length > 0 ? (
+    const cambiarCurso = (curso) => {
+      setOpcionSeleccionada(null);
+      setBusqCurso(curso);
+    }
+    
+    return (
+      <div>
+        <div className={styles.Main}>
+          <div className={styles.Info}>
+            <h1>Fechas y horarios disponibles</h1>
+            <br />
+            <input type="date" placeholder="Ingrese una Fecha" value={busqFecha} onChange={(e) => cambiarFecha(e.target.value)} />
+            <input type="text" placeholder="Curso de Interés" value={busqCurso} onChange={(e) => cambiarCurso(e.target.value)} />
+            <p>DD/MM/YYYY</p>
             <div>
-              {filtrarHorarios().map((horario, index) => (
-                <div
-                  key={index}
-                  className={`horarioItem ${
-                    opcionSeleccionada === index ? "selected" : ""
-                  }`}
-                  onClick={() => setOpcionSeleccionada(index)}
-                >
-                  <div className="numeroHorario">{index + 1}</div>
-                  <div className="horarioDetalle">
+              {!(busqFecha==="" && busqCurso==="") ?
+                <div>
+                  {filtrarHorarios().length>0 ?
                     <div>
-                      {horario.dia} de {horario.horaInicio} a {horario.horaFin}
+                      {filtrarHorarios().map((h, index) => (
+                        <div key={index} className={`horarioItem ${opcionSeleccionada===index ? "selected":""}`} onClick={() => setOpcionSeleccionada(index)}>
+                          <Chip text={h.horaInicio} />
+                        </div>
+                      ))}
+                      <ul>
+                        <li>Las sesiones son de 30 minutos</li>
+                      </ul>
                     </div>
-                  </div>
+                  :
+                    <p>No hay ninguna asesoría disponible con los filtros que ha usado</p>
+                  }
+                  {opcionSeleccionada !== null ?
+                    <button className="reservarBtn" onClick={reservarCita}>Reservar cita</button>
+                  :
+                    null
+                  }
                 </div>
-              ))}
+              :
+                <p>Elige un filtro de búsqueda</p>
+              }
+              </div>
             </div>
-          ) : (
-            <p>No hay horarios disponibles para esta fecha</p>
-          )}
-          {opcionSeleccionada !== null && (
-            <button className="reservarBtn" onClick={reservarCita}>
-              Reservar cita
-            </button>
-          )}
+          </div>
         </div>
-      </div>
-    </div>
-  );
+      );
 };
-
-export default RegistroCita;

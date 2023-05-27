@@ -8,6 +8,7 @@ const Menu = () => {
         <Link href="/AlumnoPrincipal">Principal</Link>
         <Link href="/Perfil-Alumno">Perfil</Link>
         <Link href="/CitasAlumnos">Citas</Link>
+        <Link href="/">Cerrar sesión</Link>
       </div>
     </div>
   );

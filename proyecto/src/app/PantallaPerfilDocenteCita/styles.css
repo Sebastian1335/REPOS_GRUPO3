@@ -1,0 +1,85 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 7px;
+  padding: 5px;
+  border-radius: 7px;
+  background-color: #ffffff;
+  border: 1px solid rgb(32, 14, 29);
+  height: 40px;
+}
+
+.box:last-child {
+  margin-right: 0;
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-bottom: 17px;
+  margin-top: 15px;
+}
+
+.Cursos {
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 17px; 
+}
+
+.Descripcion {
+  margin-left: 15px;
+}
+
+.Descripcion p:first-child {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 3px;
+}
+
+.Descripcion p:last-child {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+.text-container p {
+  margin: 0;
+}
+
+.text2-container p:first-child {
+  font-weight: bold;
+}
+
+.text2-container p:last-child {
+  font-weight: normal;
+}
+
+.text2-container p {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  max-width: 50%;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  background: #eaddff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #21005d;
+  font-weight: bold;
+  font-size: 20px;
+}
