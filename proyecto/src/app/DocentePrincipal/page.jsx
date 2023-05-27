@@ -5,7 +5,7 @@ import TopBar from "@/components/TopBar/TopBar";
 import Menu from "@/components/MenuDocente/Menu";
 import styles from "../DocentePrincipal/page.module.css";
 import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
-import Mascota from "../../components/MascotaSorpresa/Mascota"
+import Mascota from "../../components/MascotaSorpresa/page"
 
 const Docente = () => {
   //Aparecer nombre en la pantalla
