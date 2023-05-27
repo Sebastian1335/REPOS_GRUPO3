@@ -5,6 +5,7 @@ import TopBar from "@/components/TopBar/TopBar";
 import Menu from "@/components/MenuAlumno/Menu";
 import styles from "../AlumnoPrincipal/page.module.css";
 import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
+import Mascota from "../../components/MascotaSorpresa/Mascota"
 
 const Alumno = () => {
   //Mostrar nombre
@@ -99,6 +100,9 @@ const Alumno = () => {
                   </div>
                 )}
               </div>
+            </div>
+            <div className={styles.mascota}>
+            <Mascota></Mascota>
             </div>
           </div>
 

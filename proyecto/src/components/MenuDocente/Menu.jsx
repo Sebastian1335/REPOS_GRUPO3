@@ -5,10 +5,11 @@ const Menu = () => {
   return (
     <div>
       <div className={styles.Sidebar}>
-        <Link href="/">Principal</Link>
+        <Link href="/DocentePrincipal">Principal</Link>
         <Link href="/Perfil-Docente">Perfil</Link>
         <Link href="/AgregarHorarios">Horarios</Link>
         <Link href="/ResumenCalificaciones">Calificaciones</Link>
+        <Link href="/">Cerrar sesión</Link>
       </div>
     </div>
   );
