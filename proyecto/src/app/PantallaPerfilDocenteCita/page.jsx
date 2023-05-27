@@ -62,7 +62,7 @@ const PantallaPerfilDocenteCita = () => {
           console.log(citas);
           console.log("separación");
           localStorage.setItem("citas", JSON.stringify(citas));
-          window.location.href = "/AlumnoPrincipal";
+          alert("Usted ha reservado la cita exitosamente para el " + citaReservada.dia + " a las " + citaReservada.horaInicio + ". Encontrará el detalle en su página de clase");
         }else{
           alert("https://www.youtube.com/watch?v=N025nnrcGrc&t=139s");
         }
@@ -110,8 +110,9 @@ const PantallaPerfilDocenteCita = () => {
               <BoxWithText key={index} text={text} />
             ))}
           </div>
-          <h1>Fechas y horarios disponibles</h1>
           <br />
+          <h5>Fechas y horarios disponibles</h5>
+          <hr />
           <input type="date" placeholder="Ingrese una Fecha" value={busqFecha} onChange={(e) => cambiarFecha(e.target.value)} />
           <input type="text" placeholder="Curso de Interés" value={busqCurso} onChange={(e) => cambiarCurso(e.target.value)} />
           <p>DD/MM/YYYY</p>
