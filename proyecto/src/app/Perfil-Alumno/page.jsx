@@ -202,9 +202,7 @@ const Perfil = () => {
                 </div>
               </div>
 
-              <div className={styles.foto}>
-                <Avatar></Avatar>
-              </div>
+              <div className={styles.foto}></div>
             </div>
 
             <hr></hr>
