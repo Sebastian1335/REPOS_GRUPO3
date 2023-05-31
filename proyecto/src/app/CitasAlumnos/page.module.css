@@ -9,59 +9,6 @@
   width: -webkit-fill-available;
 }
 
-.Fondo {
-  background-color: #f3eef6;
-  padding: 15px;
-}
-
-.citaContainer {
-  background-color: white;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.numeroCita {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: #684fa5;
-  color: #ffffff;
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-.pagination {
-  display: flex;
-  justify-content: right;
-}
-
-.paginationButton {
-  border: none;
-  padding: 5px 15px;
-  background-color: transparent;
-  color: #684fa5;
-  border-bottom: 2px solid transparent;
-  transition: background-color 0.3s, border-bottom-color 0.3s;
-}
-
-.active {
-  background-color: #d0c8e4;
-  border-bottom-color: #684fa5;
-}
-
-.citasGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
-  grid-gap: 10px;
-}
-
 /* USADO */
 .title {
   font-family: inherit;
@@ -78,6 +25,12 @@
   border-radius: 100px;
   width: 170px;
   height: 40px;
+  border: none;
+}
+
+.firstButton:active:focus {
+  box-shadow: 0 0 20px #6750a4;
+  background: #6750a4;
 }
 
 .firstTxt,
@@ -110,6 +63,12 @@
   background: #ffffff;
 }
 
+.secondButton:active:focus {
+  box-shadow: 0 0 20px gray;
+  background: #ffffff;
+  border: 1px solid #79747e;
+}
+
 .secondTxt,
 .secondTxt:hover {
   font-family: inherit;
@@ -138,6 +97,8 @@
   border-radius: 12px;
   padding: 12px;
   margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
 }
 
 .icono {
@@ -146,8 +107,19 @@
   background-color: #6750a4;
   border-radius: 50%;
   margin-right: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.icono span {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fef7ff;
+}
 .subcontainer {
   display: flex;
   flex-direction: row;
@@ -214,7 +186,7 @@
   background: #fef7ff;
   border: 1px solid #79747e;
   border-radius: 100px;
-  margin-top: 32px;
+  /* margin-top: 32px; */
 }
 
 .innerTxt {
@@ -236,4 +208,5 @@
   text-align: center;
   color: #1d1b20;
   justify-content: flex-end;
+  margin-top: 5px;
 }
