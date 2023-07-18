@@ -9,6 +9,7 @@ import Inicio from "@/components/Inicio/inicio.jsx" //cambio
 export default function HorarioDocente() {
   Inicio("/AgregarHorarios")
 
+<<<<<<< HEAD
   // Funciones para agregar horarios
   const defaultHorario = {dia: "", horaInicio: "", horaFin: "", enlace: ""}
   const [horario, setHorario] = useState(defaultHorario);
@@ -16,6 +17,14 @@ export default function HorarioDocente() {
   //const [horaInicio, setHoraInicio] = useState("");
   //const [horaFin, setHoraFin] = useState("");
   //const [enlace, setEnlace] = useState("");
+=======
+  // Constantes para agregar horarios
+  const [horario, setHorario] = useState([]);
+  const [dia, setDia] = useState("");
+  const [horaInicio, setHoraInicio] = useState("");
+  const [horaFin, setHoraFin] = useState("");
+  const [enlace, setEnlace] = useState("");
+>>>>>>> d019e4745924f9e1271dfde85374c891ad1146ad
 
   useEffect(() => {
     obtenerHorario();

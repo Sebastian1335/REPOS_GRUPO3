@@ -1,0 +1,198 @@
+.Main {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.Info {
+  padding: 4%;
+  width: -webkit-fill-available;
+}
+
+/* USADO */
+.title {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 28px;
+  color: #000000;
+}
+
+.firstButton,
+.firstButton:hover {
+  background: #6750a4;
+  border-radius: 100px;
+  width: 170px;
+  height: 40px;
+}
+
+.firstTxt,
+.firstTxt:hover {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.subtitle {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000000;
+  margin-bottom: 48px;
+}
+
+.secondButton,
+.secondButton:hover {
+  padding: 0px;
+  width: 152px;
+  height: 40px;
+  border: 1px solid #79747e;
+  border-radius: 100px;
+  background: #ffffff;
+}
+
+.secondTxt,
+.secondTxt:hover {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #6750a4;
+}
+
+.noCitas {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: #000000;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.container {
+  width: 314px;
+  height: 420px;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 32px;
+}
+
+.icono {
+  width: 40px;
+  height: 40px;
+  background-color: #6750a4;
+  border-radius: 50%;
+  margin-right: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icono span {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fef7ff;
+}
+
+.subcontainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.imagen {
+  height: 148px;
+  background-color: #dadce0;
+}
+
+.cardTitle {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1d1b20;
+}
+
+.cardSubtitle {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #1d1b20;
+}
+
+.horario {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1d1b20;
+  margin-top: 16px;
+}
+
+.curso {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #49454f;
+  margin-top: 4px;
+}
+
+.zoom {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #49454f;
+  margin-top: 32px;
+}
+
+.innerButton {
+  padding: 0px;
+  width: 104px;
+  height: 40px;
+  background: #fef7ff;
+  border: 1px solid #79747e;
+  border-radius: 100px;
+  margin-top: 32px;
+}
+
+.innerTxt {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #6750a4;
+}
+
+.nota {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #1d1b20;
+  justify-content: flex-end;
+}

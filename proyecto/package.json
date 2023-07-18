@@ -23,6 +23,10 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
     "react-rating-stars-component": "^2.2.0",
+<<<<<<< HEAD
     "react-router-dom": "^6.11.2"
+=======
+    "react-stars": "^2.2.5"
+>>>>>>> d019e4745924f9e1271dfde85374c891ad1146ad
   }
 }

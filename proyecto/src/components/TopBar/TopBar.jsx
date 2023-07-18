@@ -7,7 +7,7 @@ import styles from "../TopBar/TopBar.module.css";
 const TopBar = ({ onButtonClick }) => {
   const router = useRouter();
 
-  const rolUsuario = localStorage.getItem("rolUsuario");
+  const rolUsuario = localStorage.getItem("rol");
   const handleProfileClick = () => {
     if (rolUsuario === "profesor") {
       router.push("/Perfil-Docente");
