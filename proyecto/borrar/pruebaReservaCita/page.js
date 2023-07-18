@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styles from "../ResumenCalificaciones/page.module.css";
-import Chip from '../../components/Chip/Chip.jsx';
+import Chip from '../../src/components/Chip/Chip.jsx';
 
 export default function pruebaReserva(){
     // Funciones para aparecer el menu

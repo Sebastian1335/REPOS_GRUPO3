@@ -1,6 +1,6 @@
 'use client'
 import styles from '../Registro/styles.module.css'
-import Link from 'next/link'
+//import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Form from 'react-bootstrap/Form'
@@ -10,16 +10,20 @@ import Col from 'react-bootstrap/Col';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button'
 import { FormControl, FormLabel } from 'react-bootstrap'
-import PersonaApi from '@/api/persona.js'
+//import PersonaApi from '@/api/persona.js'
+import Inicio from "@/components/Inicio/inicio.jsx" //cambio
 
 const Registro = () =>{
+    Inicio("/Registro")
     const router = useRouter();
-    const [showDatosPersona, setShowDatosPersona ] = useState(true)
+    //const [showDatosPersona, setShowDatosPersona ] = useState(true)
+    const [contra2, setContra2] = useState(""); //cambio
 
     const defaultPersona = {
         correo: "",
-        contraseña1: "",
-        contraseña2: "",
+        contrasena: "", //cambio
+        //contraseña1: "",
+        //contraseña2: "",
         nombres: "",
         apellidos: "",
         doc: "",
@@ -29,37 +33,40 @@ const Registro = () =>{
 
     const [persona, setPersona] = useState(defaultPersona)
 
-    const handleOnDropdownChange = (eventKey) => {
+    /*const handleOnDropdownChange = (eventKey) => {
         if (eventKey === "persona")
             setShowDatosPersona(true)
         else
             setShowDatosPersona(false)
-    } 
+    }*/
 
     const handleOnClick = () => {
-        if (persona.contraseña1 !== persona.contraseña2) {
+        if (persona.contrasena !== contra2) { //cambio
             alert("Las contraseñas no coinciden");
-            return;
-        }
-          
-        if (Object.values(persona).some(value => value === "")) {
+        }else if (Object.values(persona).some(value => value === "")) {
             alert("Por favor, complete todos los campos");
-            return;
+        }else{ 
+            router.push('/');
+
+            //cambio
+            const personas = JSON.parse(window.localStorage.getItem("personas")) || [];
+            personas.push(persona);
+            window.localStorage.setItem("personas", JSON.stringify(personas));
+            router.push("/Login")
+            //cambio
+
+            /*
+            PersonaApi.save(persona)
+            const personas = PersonaApi.getAll()
+            let AUXArray = JSON.parse(localStorage.getItem("personas")) || [];
+            AUXArray.push(persona)
+            let arrayJSON = JSON.stringify(AUXArray)
+            localStorage.setItem("personas",arrayJSON)
+            console.log(personas)
+            router.push("/Login")
+            */
         }
-      
-        router.push('/');
-
-        PersonaApi.save(persona)
-        const personas = PersonaApi.getAll()
-        let AUXArray = JSON.parse(localStorage.getItem("personas")) || [];
-        AUXArray.push(persona)
-        let arrayJSON = JSON.stringify(AUXArray)
-        localStorage.setItem("personas",arrayJSON)
-        console.log(personas)
-        router.push("/Login")
     }
-
-
 
     return(
             
@@ -79,12 +86,12 @@ const Registro = () =>{
                         <Col>
                             <FormLabel htmlFor='Correo'className={styles.color}>Contraseña</FormLabel>
                             <FormControl type='password' id="contraseña1"
-                                value={persona.contraseña1}
-                                onChange={e => setPersona({...persona,contraseña1: e.target.value})}/>
+                                value={persona.contrasena}
+                                onChange={e => setPersona({...persona,contrasena: e.target.value})}/> {/**/}
                             <FormLabel htmlFor='Correo'className={styles.color}>Confirmar Contraseña</FormLabel>
                             <FormControl type='password' id="contraseña2"
-                                value={persona.contraseña2}
-                                onChange={e => setPersona({...persona,contraseña2: e.target.value})}/>
+                                value={contra2}
+                                onChange={e => setContra2(e.target.value)}/> {/**/}
                             
                         </Col>
                     </Row>

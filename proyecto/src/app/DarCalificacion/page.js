@@ -4,9 +4,11 @@ import { Button, Form, FormControl, InputGroup, ListGroup } from 'react-bootstra
 
 import './style.css'; // Importa el archivo de estilos personalizados
 import CalificacionesApi from '@/api/calificaciones.js'
+import Inicio from "@/components/Inicio/inicio.jsx" //cambio
 
 const Calificacion = () => {
-    const [calificacion, setCalificacion] = useState(0);
+  Inicio("/DarCalificacion")  
+  const [calificacion, setCalificacion] = useState(0);
     const [comentario, setComentario] = useState('');
     const [profesores, setProfesores] = useState([]);
     const [profesorSeleccionado, setProfesorSeleccionado] = useState(null);
@@ -18,7 +20,7 @@ const Calificacion = () => {
 
     
     const calificacionData = {
-        nombreProfesor: `${profesorSeleccionado.nombres} ${profesorSeleccionado.apellidos}`,
+        nombreProfesor: `${profesorSeleccionado?.nombres} ${profesorSeleccionado?.apellidos}`,
         calificacion: calificacion,
         comentario: comentario,
       };

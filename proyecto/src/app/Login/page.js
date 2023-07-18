@@ -4,13 +4,16 @@ import styleL from '../../../src/app/Login/styleL.module.css'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import Stack from 'react-bootstrap/Stack';
+//import Stack from 'react-bootstrap/Stack';
 /*import Link from '../../components/Link/Link.jsx'*/
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from "next/link"
+import Inicio from "@/components/Inicio/inicio.jsx" //cambio
 
 const Login = () => {
+    
+    Inicio("/Login");
     const [usuario, setUsuario] = useState('')
     const [password, setPassword] = useState('')
 
@@ -18,31 +21,30 @@ const Login = () => {
 
     const handleClick = () => {
 
-        const data = JSON.parse(localStorage.getItem('personas'))
+        const data = JSON.parse(window.localStorage.getItem('personas')) //cambio
         let foundusuario = null
-        let FoundRol = null
         if (data) {
             foundusuario = data.find(
-                (item) => item.correo === usuario && item.contraseña1 === password
-                )
-            FoundRol = foundusuario.rol
-        }
-
-        if (foundusuario){
-            //Conseguir el dato de nombres
-            localStorage.setItem('nombreUsuario', foundusuario.nombres);
-            //Conseguir el dato de rol
-            localStorage.setItem('rol', foundusuario.rol);
+                (item) => item.correo === usuario && item.contrasena === password //cambio
+            )
             
-            if (FoundRol === 'profesor'){
-                router.push('/DocentePrincipal')
+            //cambio
+            if(foundusuario){
+                //Conseguir el dato de nombres
+                window.localStorage.setItem('nombreUsuario', foundusuario.nombres);
+                //Conseguir el dato de rol
+                window.localStorage.setItem('rol', foundusuario.rol);
+                window.localStorage.setItem("recargar", "true");
+                //window.location.replace("/UsuarioPrincipal")
+                router.push('/UsuarioPrincipal')
             }else{
-                router.push('/AlumnoPrincipal')
+                alert("Correo o contraseña incorrectos");
             }
+            //cambio
+                
         }else{
-            alert('Usuario o password incorrecto')
+            alert("Actualmente no existen cuentas");
         }
-            
     }
 
     return (
