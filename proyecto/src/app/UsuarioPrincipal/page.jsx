@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 //import Menu from "@/components/MenuAlumno/Menu";
 import styles from "@/app/page.module.css";
 //import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
-import Mascota from "../../components/MascotaSorpresa/Mascota"
+import Mascota from "../../components/MascotaSorpresa/page"
 import Inicio from "@/components/Inicio/inicio.jsx" //cambio
 
 const Usuario = () => {
