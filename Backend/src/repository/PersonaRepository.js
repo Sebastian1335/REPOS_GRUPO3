@@ -12,10 +12,26 @@ let Personas = [{
     presentacion: "nose",
     grado: "3er Ciclo"
 
+  },
+  {
+    id: 2, 
+    nombre: "Lucas",
+    apellido: "Mamani",
+    tipoDocumento: "DNI",
+    dni: "73134543",
+    idRol: "2",
+    email: "LucasXD@gmail.com",
+    contraseña: "1234",
+    idCarrera: "1",
+    tituloPresentacion: "nose",
+    presentacion: "nose",
+    grado: "3er Ciclo"
+
   }
+
 ]
 
-  let counter = 1;
+  let counter = 2;
 
   const findAll = () => {
     return Personas;
