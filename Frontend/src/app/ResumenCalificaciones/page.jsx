@@ -8,8 +8,8 @@ import Chip from '../../components/Chip/Chip.jsx'
 import Inicio from "@/components/Inicio/inicio.jsx" //cambio
 import rolApi from '../api/universidad.js'
 import { TextEncoder } from 'text-encoding-utf-8';
-
-
+ 
+//hola
 export default function ResumenCalificaciones() {
   Inicio("/ResumenCalificaciones");
   
