@@ -1,5 +1,7 @@
 import { DataTypes } from 'sequelize'
 import sequelize from '../config/database.js'
+import Persona from './Persona.js'
+import Curso from './Curso.js'
 
 const Cita = sequelize.define('Cita', {
     idCita: {
@@ -32,6 +34,26 @@ const Cita = sequelize.define('Cita', {
     idCurso: {
         type: DataTypes.INTEGER
     }
+})
+
+Cita.belongsTo(Persona, {
+    foreignKey: 'idPersona',
+    targetKey: 'idPersona'
+})
+
+Persona.hasMany(Cita, {
+    foreignKey: 'idPersona',
+    targetKey: 'idPersona'
+})
+
+Cita.belongsTo(Curso, {
+    foreignKey: 'idCurso',
+    targetKey: 'idCurso'
+})
+
+Curso.hasMany(Cita, {
+    foreignKey: 'idCurso',
+    targetKey: 'idCurso'
 })
 
 export default Cita

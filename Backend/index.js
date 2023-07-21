@@ -12,7 +12,7 @@ async function main() {
 
         console.log('connection successful')
         
-        app.listen(3001)
+        app.listen(3002)
 
         console.log('app iniciada')
     }

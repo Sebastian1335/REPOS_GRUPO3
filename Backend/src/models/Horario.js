@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize'
 import sequelize from '../config/database.js'
+import Persona from './Persona.js'
 
 const Horario = sequelize.define('Horario', {
     idHorario: {
@@ -20,6 +21,16 @@ const Horario = sequelize.define('Horario', {
     horaFin: {
         type:DataTypes.TIME
     }
+})
+
+Horario.belongsTo(Persona, {
+    foreignKey: 'idPersona',
+    targetKey: 'idPersona'
+})
+
+Persona.hasMany(Horario, {
+    foreignKey: 'idPersona',
+    targetKey: 'idPersona'
 })
 
 export default Horario

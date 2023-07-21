@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize'
 import sequelize from '../config/database.js'
+import Universidad from './Universidad.js'
 
 const Curso = sequelize.define('Curso', {
     idCurso: {
@@ -11,6 +12,16 @@ const Curso = sequelize.define('Curso', {
     idUniversidad: {
         type:DataTypes.INTEGER
     }
+})
+
+Curso.belongsTo(Universidad, {
+    foreignKey: 'idUniversidad',
+    targetKey: 'idUniversidad'
+})
+
+Universidad.hasMany(Curso, {
+    foreignKey: 'idUniversidad',
+    targetKey: 'idUniversidad'
 })
 
 export default Curso

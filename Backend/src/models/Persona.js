@@ -1,5 +1,7 @@
 import { DataTypes } from 'sequelize'
 import sequelize from '../config/database.js'
+import Carrera from './Carrera.js'
+import Rol from './Rol.js'
 
 const Persona = sequelize.define('Persona', {
     idPersona: {
@@ -41,6 +43,26 @@ const Persona = sequelize.define('Persona', {
     grado: {
         type: DataTypes.STRING
     }
+})
+
+Persona.belongsTo(Carrera, {
+    foreignKey: 'idCarrera',
+    targetKey: 'idCarrera'
+})
+
+Carrera.hasMany(Persona, {
+    foreignKey: 'idCarrera',
+    targetKey: 'idCarrera'
+})
+
+Persona.belongsTo(Rol, {
+    foreignKey: 'idRol',
+    targetKey: 'idRol'
+})
+
+Rol.hasOne(Persona, {
+    foreignKey: 'idRol',
+    targetKey: 'idRol'
 })
 
 export default Persona

@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize'
 import sequelize from '../config/database.js'
+import Cita from './Cita.js'
 
 const Calificacion = sequelize.define('Calificacion', {
     idCalificacion: {
@@ -17,6 +18,16 @@ const Calificacion = sequelize.define('Calificacion', {
     comentario: {
         type:DataTypes.STRING
     }
+})
+
+Calificacion.belongsTo(Cita, {
+    foreignKey: 'idCita',
+    targetKey: 'idCita'
+})
+
+Cita.hasOne(Calificacion, {
+    foreignKey: 'idCita',
+    targetKey: 'idCita'
 })
 
 export default Calificacion
