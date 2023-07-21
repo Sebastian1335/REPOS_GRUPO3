@@ -32,16 +32,30 @@ const Registro = () =>{
     }
 
     const [persona, setPersona] = useState(defaultPersona)
+    
 
+    const handleRegresar = () => {
+        router.push("/");
+    }
     /*const handleOnDropdownChange = (eventKey) => {
         if (eventKey === "persona")
             setShowDatosPersona(true)
         else
             setShowDatosPersona(false)
     }*/
-
+    function validarCorreo(correo) {
+        // Expresión regular para verificar si el correo contiene el carácter "@"
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(correo);
+    }
     const handleOnClick = () => {
-        if (persona.contrasena !== contra2) { //cambio
+        
+        if (persona.numero.length != 8){
+            alert("Numero de DNI Invalido")
+        }else if (persona.correo && !validarCorreo(persona.correo)){
+            alert("Correo electronico invalido")
+        }
+        else if (persona.contrasena !== contra2) { //cambio
             alert("Las contraseñas no coinciden");
         }else if (Object.values(persona).some(value => value === "")) {
             alert("Por favor, complete todos los campos");
@@ -153,9 +167,13 @@ const Registro = () =>{
                         </Col>
                     </Row>
                     <Row>
+
                         <Col className='bot d-flex justify-content-end'>
+                                <Button variant="primary" type="submit" onClick={handleRegresar}>
+                                    Canselar registro
+                                </Button>
                                 <Button variant="primary" type="submit" onClick={() => handleOnClick()}>
-                                Ingresar
+                                    Ingresar
                                 </Button>
                         </Col>
                     </Row>
