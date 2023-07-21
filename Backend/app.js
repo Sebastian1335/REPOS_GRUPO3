@@ -29,7 +29,7 @@ app.use("/Cita", citaRoutes)
 app.use("/Calificacion", calificacionRoutes)
 app.use("/PersonaCurso", PersonaCursoRoutes)
 
-app.listen(3001, () => {
+app.listen(3002, () => {
     console.log('Servidor iniciado.')
 })
 
