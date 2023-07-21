@@ -1,12 +1,12 @@
-GET http://localhost:3002/universidad
+GET http://localhost:3002/rol
 ########
 
-POST http://localhost:3002/universidad/
+POST http://localhost:3002/rol/
 Content-Type: application/json
 
 {
-    "idUniversidad": 1, 
-    "descripcion": "Universidad de Lima"
+
+    "descripcion": "gia llora"
 }
 ###
 

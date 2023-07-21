@@ -1,3 +1,4 @@
+import { TextEncoder } from 'text-encoding-utf-8';
 import axios from 'axios'
 
 const URI = 'http://localhost:3002';
