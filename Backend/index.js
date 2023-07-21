@@ -1,33 +1,24 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import cors from 'cors'
+import app from './app.js'
+import sequelize from './src/config/database.js'
 
-import rolRoutes from './src/routes/rol.js'
-import universidadRoutes from './src/routes/universidades.js'
-import personaRoutes from './src/routes/persona.js'
-import carreraRoutes from './src/routes/carrera.js'
-import cursoRoutes from './src/routes/curso.js'
-import horarioRoutes from './src/routes/horario.js'
-import citaRoutes from './src/routes/cita.js'
-import calificacionRoutes from './src/routes/calificacion.js'
-import PersonaCursoRoutes from './src/routes/personaCurso.js'
-let app = express()
-app.use(bodyParser.json())
-app.use(cors())
+async function main() {
+    try {
+        const init =  process.argv[2];
+        console.log({init})
+        if (init)
+            await sequelize.sync({force: true})
+        else 
+            await sequelize.sync({force: false})
 
-app.get('/', (req,res) =>{
-    return res.json({result: 'OK'})
-})
+        console.log('connection successful')
+        
+        app.listen(3001)
 
-app.use("/rol", rolRoutes);
-app.use("/Universidad", universidadRoutes)
-app.use("/Persona", personaRoutes)
-app.use("/Carrera", carreraRoutes)
-app.use("/Curso", cursoRoutes)
-app.use("/Horario", horarioRoutes)
-app.use("/Cita", citaRoutes)
-app.use("/Calificacion", calificacionRoutes)
-app.use("/PersonaCurso", PersonaCursoRoutes)
-app.listen(3001, () => {
-    console.log('app is running!')
-})
+        console.log('app iniciada')
+    }
+    catch(err) {
+        console.error('Connection error: ', err)
+    }
+}
+
+main()

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import TopBar from "@/components/TopBar/TopBar";
-import Menu from "@/components/MenuDocente/Menu";
+import Menu from "@/components/Menu/Menu";
 import styles from "../Perfil-Docente/page.module.css";
 import { Button, Container, FormControl, FormLabel } from "react-bootstrap";
 import Avatar from "../../components/Avatar/Avatar";

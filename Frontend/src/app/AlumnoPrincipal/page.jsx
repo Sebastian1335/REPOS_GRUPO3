@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import TopBar from "@/components/TopBar/TopBar";
-import Menu from "@/components/MenuAlumno/Menu";
-import styles from "../AlumnoPrincipal/page.module.css";
+import Menu from "@/components/Menu/Menu";
+import styles from "../page.module.css";
 import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
 import Mascota from "../../components/MascotaSorpresa/page"
 
