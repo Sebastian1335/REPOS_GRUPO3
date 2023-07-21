@@ -6,9 +6,19 @@ import styles from "../ResumenCalificaciones/page.module.css";
 import CalificacionApi from '@/api/calificaciones.js'
 import Chip from '../../components/Chip/Chip.jsx'
 import Inicio from "@/components/Inicio/inicio.jsx" //cambio
+import rolApi from '../api/rol.js'
 
 export default function ResumenCalificaciones() {
   Inicio("/ResumenCalificaciones");
+  
+  const handleOnLoad = async() => {
+    const result = await rolApi.findAll()
+    console.log(result.data)
+  }
+
+  useEffect(() => {
+    handleOnLoad()
+  }, [])
   
   const defaultCalificacion = {
       nombres: "",
