@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import TopBar from "@/components/TopBar/TopBar";
-import Menu from "@/components/MenuAlumno/Menu";
+import Menu from "@/components/Menu/Menu";
 import styles from "./page.module.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
