@@ -1,42 +1,83 @@
-let Universidades = [{
-    id: 1, nombre: "Universidad de Lima"
-  },
-  {
-    id: 2, nombre: "Universidad Cayetano Heredia"
-  }
-]
+import Universidad from '../models/Universidad.js'
 
-  let counter = 2;
+const findAll = async () => {
+    try {
 
-  const findAll = () => {
-    return Universidades;
-  }
+        return await Universidad.findAll();
 
-  const create = (Universidad) => {
-    counter++;
-    const newObject = {...Universidad, id: counter };
-    Universidades.push(newObject);
+    } catch(err) {
+        console.error(err)
 
-    return newObject;
-  }
-
-  const findOne = (id) => {
-    const result = Universidad.find(x => x.id == id);
-
-    return result;
-  }
-
-  const update = (Universidad) => { 
-    const index = Universidades.findIndex(x => x.id === Universidad.id)
-
-    if (index > -1) {
-        Universidades[index] = Universidad;
+        return null;
     }
+}
 
-    return Universidad;
-  }
-  
-  const UniversidadRepository = { findAll , findOne, create, update }
+const create = async (universidad) => {
+    try {
 
+        const newUniversidad = await Universidad.create(universidad);
 
-  export default UniversidadRepository
+        return newUniversidad;
+
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
+}
+
+const findOne = async (id) => {
+    try {
+        return await Universidad.findOne({
+            where: {
+                id
+            }
+        })
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+}
+
+const update = async (universidad) => {
+    try {
+        const foundUniversidad =  await Universidad.findOne({
+            where: {
+                id: universidad.id
+            }
+        })
+
+        foundUniversidad.set(universidad)
+
+        foundUniversidad.save()
+
+        return foundUniversidad;
+
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+}
+
+const remove = async (id) => {
+    try {
+        await Universidad.destroy({
+            where: {
+                id
+            }
+        })
+
+        return true;
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }        
+
+}
+
+const UniversidadRepository = { findAll, create, findOne,update, remove };
+
+export default UniversidadRepository

@@ -1,42 +1,83 @@
-let Calificaciones = [{
-    id: 1, 
-    idCita: 1,
-    Calificacion: 5,
-    Comentario: "TaChevere"
+import Calificacion from '../models/Calificacion.js'
+
+const findAll = async () => {
+  try {
+
+      return await Calificacion.findAll();
+
+  } catch(err) {
+      console.error(err)
+
+      return null;
   }
-]
+}
 
-  let counter = 1;
+const create = async (calificacion) => {
+  try {
 
-  const findAll = () => {
-    return Calificaciones;
+      const newCalificacion = await Calificacion.create(calificacion);
+
+      return newCalificacion;
+
+  } catch(err) {
+      console.error(err)
+
+      return null;
   }
+}
 
-  const create = (Calificacion) => {
-    counter++;
-    const newObject = {...Calificacion, id: counter };
-    Calificaciones.push(newObject);
-
-    return newObject;
+const findOne = async (id) => {
+  try {
+      return await Calificacion.findOne({
+          where: {
+              id
+          }
+      })
   }
-
-  const findOne = (id) => {
-    const result = Calificacion.find(x => x.id == id);
-
-    return result;
+  catch(err) {
+      console.error(err)
+      return null;
   }
+}
 
-  const update = (Calificacion) => { 
-    const index = Calificaciones.findIndex(x => x.id === Calificacion.id)
+const update = async (calificacion) => {
+  try {
+      const foundCalificacion =  await Calificacion.findOne({
+          where: {
+              id: calificacion.id
+          }
+      })
 
-    if (index > -1) {
-        Calificaciones[index] = Calificacion;
-    }
+      foundCalificacion.set(calificacion)
 
-    return Calificacion;
+      foundCalificacion.save()
+
+      return foundCalificacion;
+
   }
-  
-  const CalificacionRepository = { findAll , findOne, create, update }
+  catch(err) {
+      console.error(err)
+      return null;
+  }
+}
 
+const remove = async (id) => {
+  try {
+      await Calificacion.destroy({
+          where: {
+              id
+          }
+      })
 
-  export default CalificacionRepository
+      return true;
+  }
+  catch(err) {
+      console.error(err)
+      return null;
+  }        
+
+}
+
+const CalificacionRepository = { findAll, create, findOne,update, remove };
+
+export default CalificacionRepository

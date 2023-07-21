@@ -1,41 +1,84 @@
-let Cursos = [{
-    id: 1, 
-    idUniversidad: 1,
-    desc: "Lenguajes de programación"
-  }
-]
+import Curso from '../models/curso.js'
 
-  let counter = 1;
+const findAll = async () => {
+    try {
 
-  const findAll = () => {
-    return Cursos;
-  }
+        return await Curso.findAll();
 
-  const create = (Curso) => {
-    counter++;
-    const newObject = {...Curso, id: counter };
-    Cursos.push(newObject);
+    } catch(err) {
+        console.error(err)
 
-    return newObject;
-  }
-
-  const findOne = (id) => {
-    const result = Curso.find(x => x.id == id);
-
-    return result;
-  }
-
-  const update = (Curso) => { 
-    const index = Cursos.findIndex(x => x.id === Curso.id)
-
-    if (index > -1) {
-        Cursos[index] = Curso;
+        return null;
     }
+}
 
-    return Curso;
-  }
-  
-  const CursoRepository = { findAll , findOne, create, update }
+const create = async (curso) => {
+    try {
+
+        const newCurso = await Curso.create(curso);
+
+        return newCurso;
+
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
+}
+
+const findOne = async (id) => {
+    try {
+        return await Curso.findOne({
+            where: {
+                id
+            }
+        })
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+}
+
+const update = async (curso) => {
+    try {
+        const foundCurso =  await Curso.findOne({
+            where: {
+                id: curso.id
+            }
+        })
+
+        foundCurso.set(curso)
+
+        foundCurso.save()
+
+        return foundCurso;
+
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+}
+
+const remove = async (id) => {
+    try {
+        await Curso.destroy({
+            where: {
+                id
+            }
+        })
+
+        return true;
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }        
+
+}
 
 
-  export default CursoRepository
+const CursoRepository = { findAll, create, findOne,update, remove };
+
+export default CursoRepository

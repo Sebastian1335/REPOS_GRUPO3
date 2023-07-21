@@ -1,41 +1,83 @@
-let PersonaCursos = [{
-    id: 1, 
-    idPersona: 1,
-    idCurso: 1
-  }
-]
+import PersonaCurso from '../models/PersonaCurso.js'
 
-  let counter = 1;
+const findAll = async () => {
+    try {
 
-  const findAll = () => {
-    return PersonaCursos;
-  }
+        return await PersonaCurso.findAll();
 
-  const create = (PersonaCurso) => {
-    counter++;
-    const newObject = {...PersonaCurso, id: counter };
-    PersonaCursos.push(newObject);
+    } catch(err) {
+        console.error(err)
 
-    return newObject;
-  }
-
-  const findOne = (id) => {
-    const result = PersonaCurso.find(x => x.id == id);
-
-    return result;
-  }
-
-  const update = (PersonaCurso) => { 
-    const index = PersonaCursos.findIndex(x => x.id === PersonaCurso.id)
-
-    if (index > -1) {
-        PersonaCursos[index] = PersonaCurso;
+        return null;
     }
+}
 
-    return PersonaCurso;
-  }
-  
-  const PersonaCursoRepository = { findAll , findOne, create, update }
+const create = async (personaCurso) => {
+    try {
 
+        const newPersonaCurso = await PersonaCurso.create(personaCurso);
 
-  export default PersonaCursoRepository
+        return newPersonaCurso;
+
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
+}
+
+const findOne = async (id) => {
+    try {
+        return await PersonaCurso.findOne({
+            where: {
+                id
+            }
+        })
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+}
+
+const update = async (personaCurso) => {
+    try {
+        const foundPersonaCurso =  await PersonaCurso.findOne({
+            where: {
+                id: personaCurso.id
+            }
+        })
+
+        foundPersonaCurso.set(personaCurso)
+
+        foundPersonaCurso.save()
+
+        return foundPersonaCurso;
+
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+}
+
+const remove = async (id) => {
+    try {
+        await PersonaCurso.destroy({
+            where: {
+                id
+            }
+        })
+
+        return true;
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }        
+
+}
+
+const PersonaCursoRepository = { findAll, create, findOne,update, remove };
+
+export default PersonaCursoRepository

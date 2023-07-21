@@ -1,47 +1,83 @@
-let Citas = [{
-    id: 1, 
-    idPersonaDocente: 1,
-    idPersonaAlumno: 2,
-    Fecha: "20/07/2023",
-    horaInicio: "18:00",
-    horaFin: "20:00",
-    enlaceSesion: "www.cita.com.pe",
-    estado: "TamoActivoPapi",
-    idCurso: 1
-  }
-]
+import Cita from '../models/Curso.js'
 
-  let counter = 1;
+const findAll = async () => {
+    try {
 
-  const findAll = () => {
-    return Citas;
-  }
+        return await Cita.findAll();
 
-  const create = (Cita) => {
-    counter++;
-    const newObject = {...Cita, id: counter };
-    Citas.push(newObject);
+    } catch(err) {
+        console.error(err)
 
-    return newObject;
-  }
-
-  const findOne = (id) => {
-    const result = Cita.find(x => x.id == id);
-
-    return result;
-  }
-
-  const update = (Cita) => { 
-    const index = Citas.findIndex(x => x.id === Cita.id)
-
-    if (index > -1) {
-        Citas[index] = Cita;
+        return null;
     }
+}
 
-    return Cita;
-  }
-  
-  const CitaRepository = { findAll , findOne, create, update }
+const create = async (cita) => {
+    try {
 
+        const newCita = await Cita.create(cita);
 
-  export default CitaRepository
+        return newCita;
+
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
+}
+
+const findOne = async (id) => {
+    try {
+        return await Cita.findOne({
+            where: {
+                id
+            }
+        })
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+}
+
+const update = async (cita) => {
+    try {
+        const foundCita =  await Cita.findOne({
+            where: {
+                id: cita.id
+            }
+        })
+
+        foundCita.set(cita)
+
+        foundCita.save()
+
+        return foundCita;
+
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+}
+
+const remove = async (id) => {
+    try {
+        await Cita.destroy({
+            where: {
+                id
+            }
+        })
+
+        return true;
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }        
+
+}
+
+const CitaRepository = { findAll, create, findOne,update, remove };
+
+export default CitaRepository

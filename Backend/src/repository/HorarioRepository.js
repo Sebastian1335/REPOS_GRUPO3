@@ -1,43 +1,83 @@
-let Horarios = [{
-    id: 1, 
-    idPersona: 1,
-    horaInicio: "19:00",
-    diaDeLaSemana: "Lunes",
-    HoraFin: "21:00"
-  }
-]
+import Horario from '../models/Horario.js'
 
-  let counter = 1;
+const findAll = async () => {
+    try {
 
-  const findAll = () => {
-    return Horarios;
-  }
+        return await Horario.findAll();
 
-  const create = (Horario) => {
-    counter++;
-    const newObject = {...Horario, id: counter };
-    Horarios.push(newObject);
+    } catch(err) {
+        console.error(err)
 
-    return newObject;
-  }
-
-  const findOne = (id) => {
-    const result = Horario.find(x => x.id == id);
-
-    return result;
-  }
-
-  const update = (Horario) => { 
-    const index = Horarios.findIndex(x => x.id === Horario.id)
-
-    if (index > -1) {
-        Horarios[index] = Horario;
+        return null;
     }
+}
 
-    return Horario;
-  }
-  
-  const HorarioRepository = { findAll , findOne, create, update }
+const create = async (horario) => {
+    try {
 
+        const newHorario = await Horario.create(horario);
 
-  export default HorarioRepository
+        return newHorario;
+
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
+}
+
+const findOne = async (id) => {
+    try {
+        return await Horario.findOne({
+            where: {
+                id
+            }
+        })
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+}
+
+const update = async (horario) => {
+    try {
+        const foundHorario =  await Horario.findOne({
+            where: {
+                id: horario.id
+            }
+        })
+
+        foundHorario.set(horario)
+
+        foundHorario.save()
+
+        return foundHorario;
+
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+}
+
+const remove = async (id) => {
+    try {
+        await Horario.destroy({
+            where: {
+                id
+            }
+        })
+
+        return true;
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }        
+
+}
+
+const HorarioRepository = { findAll, create, findOne,update, remove };
+
+export default HorarioRepository

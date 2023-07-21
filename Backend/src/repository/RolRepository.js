@@ -1,22 +1,83 @@
-let Rol = [{
-    id: 1, nombre: "Estudiante"
-  },
-  {
-    id: 2, nombre: "Profesor"
-  }
-]
+import Rol from '../models/Rol.js'
 
-  const findAll = () => {
-    return Rol;
-  }
+const findAll = async () => {
+    try {
 
-  const findOne = (id) => {
-    const result = Rol.find(x => x.id == id);
+        return await Rol.findAll();
 
-    return result;
-  }
-  
-  const RolRepository = { findAll , findOne }
+    } catch(err) {
+        console.error(err)
 
+        return null;
+    }
+}
 
-  export default RolRepository
+const create = async (rol) => {
+    try {
+
+        const newRol = await Rol.create(rol);
+
+        return newRol;
+
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
+}
+
+const findOne = async (id) => {
+    try {
+        return await Rol.findOne({
+            where: {
+                id
+            }
+        })
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+}
+
+const update = async (rol) => {
+    try {
+        const foundRol =  await Rol.findOne({
+            where: {
+                id: rol.id
+            }
+        })
+
+        foundRol.set(rol)
+
+        foundRol.save()
+
+        return foundRol;
+
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+}
+
+const remove = async (id) => {
+    try {
+        await Rol.destroy({
+            where: {
+                id
+            }
+        })
+
+        return true;
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }        
+
+}
+
+const RolRepository = { findAll, create, findOne,update, remove };
+
+export default RolRepository
