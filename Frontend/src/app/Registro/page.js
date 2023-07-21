@@ -74,7 +74,7 @@ const Registro = () =>{
                 <Container>
                     <Row >
                         <h3>Sistema de Citas Atención a Estudiantes</h3>
-                        <h4>Pagina de Registro</h4>
+                        <h4>Página de Registro</h4>
                     </Row>
                     <Row className='justify-content-md-center'>
                         <Col>

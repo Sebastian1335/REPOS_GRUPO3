@@ -16,15 +16,16 @@ function RootLayout({ children }) {
   
   //Mostrar Menu
   const [menuIsVisible, setMenuIsVisible] = useState(false);
+  const [barraLateral, setBarraLateral] = useState();
 
-  function aparecerMenu() {
-    setMenuIsVisible(!menuIsVisible);
-  }
-
-  let barraLateral;
-  if (menuIsVisible) {
-    barraLateral = <Menu />;
-  }
+  //let barraLateral;
+  useEffect(() => {
+    if(menuIsVisible){
+      setBarraLateral(<Menu />);
+    }else{
+      setBarraLateral();
+    }
+  }, [menuIsVisible])
 
   return (
     <html lang="en">
@@ -36,7 +37,7 @@ function RootLayout({ children }) {
           children
         :
           <div>
-            <TopBar onButtonClick={aparecerMenu}></TopBar>
+            <TopBar onButtonClick={() => {setMenuIsVisible(!menuIsVisible)}}></TopBar>
             <div className={styles.Main}>
               <div className={styles.Info}>
                 {children}

@@ -77,7 +77,7 @@ const Login = () => {
                     Salir
                 </Button>
                 </Link>
-                
+                <span> </span>
                 
                 <Button variant="primary" type="button" onClick={handleClick}>
                     Ingresar
