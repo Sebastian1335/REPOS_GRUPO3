@@ -78,6 +78,6 @@ const remove = async (id) => {
 
 }
 
-const UniversidadRepository = { findAll, create, findOne,update, remove };
+const UniversidadRepository = { findAll, create, findOne, update, remove };
 
 export default UniversidadRepository
