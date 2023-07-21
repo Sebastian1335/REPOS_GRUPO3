@@ -8,6 +8,6 @@ const router = Express.Router()
 router.get("/", findAll)
 router.get("/id:", findOne)
 router.post("/", create)
-router.put("", update)
+router.put("/", update)
 
 export default router
