@@ -2,7 +2,7 @@ import { DataTypes } from 'sequelize'
 import sequelize from '../config/database.js'
 
 const Persona = sequelize.define('Persona', {
-    id: {
+    idPersona: {
         type:DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,

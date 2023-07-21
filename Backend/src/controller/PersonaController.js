@@ -1,6 +1,5 @@
 import PersonaRepository from "../repository/PersonaRepository.js";
 
-
 const findAll = async (req, res) => {
     const result = await PersonaRepository.findAll();
 
