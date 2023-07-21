@@ -170,7 +170,7 @@ const Registro = () =>{
 
                         <Col className='bot d-flex justify-content-end'>
                                 <Button variant="primary" type="submit" onClick={handleRegresar}>
-                                    Canselar registro
+                                    Cancelar registro
                                 </Button>
                                 <Button variant="primary" type="submit" onClick={() => handleOnClick()}>
                                     Ingresar
