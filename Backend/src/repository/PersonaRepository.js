@@ -1,51 +1,63 @@
-let Personas = [{
-    id: 1, 
-    nombre: "Jorge",
-    apellido: "Orozco",
-    tipoDocumento: "DNI",
-    dni: "77115643",
-    idRol: "1",
-    email: "JOrozco@gmail.com",
-    contraseña: "1234",
-    idCarrera: "1",
-    tituloPresentacion: "nose",
-    presentacion: "nose",
-    grado: "3er Ciclo"
+// let Personas = [{
+//     id: 1, 
+//     nombre: "Jorge",
+//     apellido: "Orozco",
+//     tipoDocumento: "DNI",
+//     dni: "77115643",
+//     idRol: "1",
+//     email: "JOrozco@gmail.com",
+//     contraseña: "1234",
+//     idCarrera: "1",
+//     tituloPresentacion: "nose",
+//     presentacion: "nose",
+//     grado: "3er Ciclo"
 
-  },
-  {
-    id: 2, 
-    nombre: "Lucas",
-    apellido: "Mamani",
-    tipoDocumento: "DNI",
-    dni: "73134543",
-    idRol: "2",
-    email: "LucasXD@gmail.com",
-    contraseña: "1234",
-    idCarrera: "1",
-    tituloPresentacion: "nose",
-    presentacion: "nose",
-    grado: "3er Ciclo"
+//   },
+//   {
+//     id: 2, 
+//     nombre: "Lucas",
+//     apellido: "Mamani",
+//     tipoDocumento: "DNI",
+//     dni: "73134543",
+//     idRol: "2",
+//     email: "LucasXD@gmail.com",
+//     contraseña: "1234",
+//     idCarrera: "1",
+//     tituloPresentacion: "nose",
+//     presentacion: "nose",
+//     grado: "3er Ciclo"
 
+//   }
+// ]
+
+import Persona from '../models/Persona.js'
+
+  const findAll = async () => {
+    try {
+
+      return await Persona.findAll();
+
+    } catch(err) {
+      console.error(err)
+
+      return null;
+    }
   }
 
-]
+  const create = async (Persona) => {
+    try {
+      const newPersona = await Persona.create(persona);
 
-  let counter = 2;
+      return newPersona;
 
-  const findAll = () => {
-    return Personas;
+    } catch(err) {
+      console.error(err)
+
+      return null;
+    }
   }
 
-  const create = (Persona) => {
-    counter++;
-    const newObject = {...Persona, id: counter };
-    Personas.push(newObject);
-
-    return newObject;
-  }
-
-  const findOne = (id) => {
+  const findOne = async (id) => {
     const result = Persona.find(x => x.id == id);
 
     return result;
