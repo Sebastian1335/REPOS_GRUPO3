@@ -2,13 +2,35 @@
 import React, { useState, useEffect } from 'react';
 import TopBar from '@/components/TopBar/TopBar';
 import Menu from '@/components/Menu/Menu';
-import styles from '../PantallaPerfilDocenteCita/styles.css';
-import styles2 from "../ResumenCalificaciones/page.module.css";
-import Chip from '../../components/Chip/Chip.jsx';
+import styles from './styles.css'
+import styles2 from './page.module.css'
+import Chip from '../../../components/Chip/Chip.jsx';
 import Inicio from "@/components/Inicio/inicio.jsx" //cambio
+import personaApi from '../../api/persona.js';
+
+const obtenerIdDeUrl = () => {
+  const location = window.location.href;
+
+  const values = location.split('/');
+
+  return values[values.length-1];
+}
 
 const PantallaPerfilDocenteCita = () => {
   Inicio("/PantallaPerfilDocenteCita")
+
+  const [profe, setProfe] = useState([])
+  const [id, setId ] = useState(0)
+
+  const handleOnLoad = async() => {
+    const result = await personaApi.findOne(id)
+    setProfe(result.data)
+  }
+
+  useEffect(()=>{
+    setId(obtenerIdDeUrl());  
+    handleOnLoad()
+  }, [])
 
   const BoxWithText = ({ text }) => (
     <div className="box">
