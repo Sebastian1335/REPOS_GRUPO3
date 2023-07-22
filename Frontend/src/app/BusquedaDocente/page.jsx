@@ -17,7 +17,6 @@ import personaApi from '../api/persona.js';
 function Busqueda_docente() {
     Inicio("/BusquedaDocente")
     const frutas = ["Felipe Lopez Jimenez", "Juanito alcachofa"]
-    const [arr, setArr] = useState(frutas)
     const [textBusqueda, setTextBusqueda] = useState("")
     const [profes, setProfes] = useState([])
 
@@ -54,9 +53,9 @@ function Busqueda_docente() {
             ></Form.Control>
             <p>Ingrese nombre de docente, universidad o curso</p>
             <ul className="nobullets">
-                {arr.filter(f => f.includes(textBusqueda)).map(fruta => {
-                    return (<li key={fruta} style={{ display: 'inline-block', borderColor: 'red' }}>
-                        <Chip text={fruta}/></li>);
+                {profes?.filter(item => item.nombre.toLowerCase().includes(textBusqueda.toLowerCase()))?.map(item => {
+                    return (<li key={item} style={{ display: 'inline-block', borderColor: 'red' }}>
+                        <Chip text={item.nombre+" "+item.apellido}/></li>);
                     })
                 }
             </ul>
