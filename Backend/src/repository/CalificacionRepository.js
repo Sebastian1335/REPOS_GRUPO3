@@ -98,17 +98,17 @@ const create = (item) => {
 }
 
 const findOne = (id) => {
-    return repository.find(item => item.id == id)
+    return repository.find(item => item.idCalificacion == id)
 }
 
 const update = (item) => {
-    const index = repository.findIndex(i => i.id == item.id)
+    const index = repository.findIndex(i => i.idCalificacion == item.id)
     if(index > -1)
         repository[index] = item
 }
 
 const remove = (id) => {
-    const index = repository.findIndex(i => i.id == id)
+    const index = repository.findIndex(i => i.idCalificacion == id)
     if(index > -1){
         repository.splice(index, 1)
         return true

@@ -5,11 +5,13 @@ import Table from 'react-bootstrap/Table'
 import { useState, useEffect } from 'react'
 import personaApi from '../api/persona.js'
 import rolApi from '../api/rol.js'
+import carreraApi from '../api/carrera.js'
 
 export default function Admin() {
    
   const [personas, setPersonas] = useState([])
   const [roles, setRoles] = useState([])
+  const [carreras, setCarreras] = useState([])
   const [bus, setBus] = useState('')
   const [busq, setBusq] = useState('')
 
@@ -18,12 +20,17 @@ export default function Admin() {
     setPersonas(result.data)
     const result2 = await rolApi.findAll()
     setRoles(result2.data)
-    console.log(roles)
-    console.log(roles.find(i => i.idRol == 1))
+    const result3 = await carreraApi.findAll()
+    setCarreras(result3.data)
   }
 
   const handleBuscar = () => {
     setBusq(bus)
+  }
+
+  const handleEliminar = async(id) => {
+    await personaApi.remove(id)
+    handleOnLoad()
   }
   
   useEffect(() => {
@@ -41,7 +48,7 @@ export default function Admin() {
         </Row>
         <Row>
           <Col xs={10}>
-            <Form.Control value={bus} onChange={e => setBus(e.target.value)} type="text" placeholder="Ingrese..." />
+            <Form.Control value={bus} onChange={e => setBus(e.target.value)} type="text" placeholder="Ingrese nombre, documento o rol..." />
           </Col>
           <Col xs={2}>
             <Button onClick={() => handleBuscar()}>
@@ -62,35 +69,23 @@ export default function Admin() {
                           <th scope="col">Rol</th>
                           <th scope="col">Email</th>
                           <th scope="col">Contraseña</th>
-                          <th scope="col">Carrera</th>
+                          <th scope="col">Acciones</th>
                         </tr>
                       </thead>
                       <tbody>
-                        { personas?.filter(item => (item.nombre.toLowerCase().includes(busq.toLowerCase()))).map(item => (
+                        { personas?.filter(item => (item.nombre.toLowerCase().includes(busq.toLowerCase()) || item.dni.toString().includes(busq.toLowerCase()) || roles?.find(i => i.idRol == item.idRol)?.descripcion.toLowerCase().includes(busq.toLowerCase()) )).map(item => (
                           <tr key={item.idPersona}>
-                            <th scope="row" >
-                              <a href={'mantenimiento/'+item.idPersona}>
-                                {item.idPersona}
-                              </a>
-                              </th>
+                            <td>{item.idPersona}</td>
                             <td>{item.nombre} {item.apellido}</td>
                             <td>{item.tipoDocumento}: {item.dni}</td>
-                            <td>{item.idRol}</td>
+                            <td>{roles?.find(i => i.idRol == item.idRol)?.descripcion}</td>
                             <td>{item.email}</td>
                             <td>{item.contrasena}</td>
-                            <td>{item.idCarrera}</td>
+                            <td><Button onClick={() => handleEliminar(item.idPersona)}>Eliminar</Button></td>
                           </tr>
                         ))}
                       </tbody>
               </Table>
-          </Col>
-        </Row>
-        <Row>
-        <Col>
-            <a className="btn text-white btn-lg btn-floating" style={{backgroundColor: '#ac2bac'}} href="/mantenimiento" role="button">
-              <i className="bi bi-plus"></i>
-              Nuevo Registro
-            </a>
           </Col>
         </Row>
       </Container>

@@ -91,23 +91,24 @@ const findAll = () => {
 
 const create = (item) => {
     counter++
-    const newElement = {...item, id: counter}
+    const newElement = {...item, idPersona: counter}
     repository.push(newElement)
     return item
 }
 
 const findOne = (id) => {
-    return repository.find(item => item.id == id)
+    return repository.find(item => item.idPersona == id)
 }
 
 const update = (item) => {
-    const index = repository.findIndex(i => i.id == item.id)
+    const index = repository.findIndex(i => i.idPersona == item.id)
     if(index > -1)
         repository[index] = item
 }
 
 const remove = (id) => {
-    const index = repository.findIndex(i => i.id == id)
+    const index = repository.findIndex(i => i.idPersona == id)
+    console.log(index)
     if(index > -1){
         repository.splice(index, 1)
         return true

@@ -16,7 +16,6 @@ const update = async(request) => await Base.put(endpoint,request);
 
 const remove = async(id) => {
     const newEndpoint = endpoint.concat('/',id);
-
     return await Base.remove(newEndpoint);
 }
 
