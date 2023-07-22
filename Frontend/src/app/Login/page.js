@@ -29,6 +29,7 @@ const Login = () => {
     const handleLogin = async () => {
         const user = personas.find((persona) => persona.email === usuario && persona.contrasena === contrasena)
         if (user){
+            window.localStorage.setItem("id", user.idPersona)
             router.push("/UsuarioPrincipal")
         }else{
             alert("Credenciales invalidas")

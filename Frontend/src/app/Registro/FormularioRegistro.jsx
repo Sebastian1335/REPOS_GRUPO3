@@ -11,7 +11,7 @@ import FormLabel from 'react-bootstrap/FormLabel'
 import FormControl from 'react-bootstrap/FormControl'
 import { useRouter } from 'next/navigation'
 
-const FormularioRegistro = ({persona, onClick, onCancular}) =>{
+const FormularioRegistro = ({persona, onClick, onCancelar}) =>{
     //const [showDatosPersona, setShowDatosPersona ] = useState(true)
     const [contra2, setContra2] = useState(""); 
     const [datosPersona, setDatosPersona] = useState(persona)
@@ -65,7 +65,7 @@ const FormularioRegistro = ({persona, onClick, onCancular}) =>{
                     </Row>
                     <Row className='justify-content-md-center'>
                         <Col>
-                            <FormLabel htmlFor='email'className={styles.color}>email</FormLabel>
+                            <FormLabel htmlFor='email'className={styles.color}>Email</FormLabel>
                             <FormControl type='text' id="email"
                                 value={datosPersona.email}
                                 onChange={e => setDatosPersona({...datosPersona,email: e.target.value})}/>
@@ -142,12 +142,12 @@ const FormularioRegistro = ({persona, onClick, onCancular}) =>{
                     <Row>
 
                         <Col className='bot d-flex justify-content-end'>
-                                <Button variant="primary" type="submit" onClick={handleRegresar}>
-                                    Cancelar registro
-                                </Button>
-                                <Button variant="primary" type="submit" onClick={() => handleOnClick()}>
-                                    Ingresar
-                                </Button>
+                            <Button variant="primary" type="submit" onClick={() => handleOnClick()}>
+                                Ingresar
+                            </Button>
+                            <Button variant="primary" type="submit" onClick={handleRegresar}>
+                                Cancelar registro
+                            </Button>
                         </Col>
                     </Row>
                 </Container>

@@ -20,7 +20,7 @@ const Registro = () =>{
     //const [showDatosPersona, setShowDatosPersona ] = useState(true)
 
     const defaultPersona = {
-        id: 0,
+        idPersona: 0,
         email: "",
         nombre: "",
         apellido: "",
@@ -36,8 +36,6 @@ const Registro = () =>{
 
     const [personas, setPersonas] = useState([])
     const [persona, setPersona] = useState(defaultPersona)
-    const [ isNew, setIsNew ] = useState(true);
-    const [ isFormVisible, setIsFormVisible ] = useState(false)
 
     const handleOnLoad = async () =>{
         const result = await personaApi.findAll()
@@ -45,16 +43,12 @@ const Registro = () =>{
     }
 
     const handleAgregarPersona = () => {
-        setIsNew(true)
         setIsFormVisible(true)
         setPersona(defaultPersona)
     }
 
     const handleGuardarPersona = async (persona) => {
-        if (isNew)
-            await personaApi.create(persona)
-        else
-            await personaApi.update(persona)
+        await personaApi.create(persona)
     }
 
     const HandleCancelarFormulario = () =>{
@@ -90,7 +84,7 @@ const Registro = () =>{
                     Ingresar
                 </Button>
             </div>
-            {isFormVisible && <FormularioRegistro
+            {<FormularioRegistro
                 persona = {persona}
                 onClick = {handleGuardarPersona}
                 onCancelar = {HandleCancelarFormulario}
