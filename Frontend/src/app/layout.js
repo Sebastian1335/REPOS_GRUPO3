@@ -33,7 +33,7 @@ function RootLayout({ children }) {
 
       </head>
       <body className={inter.className}>
-        {window.localStorage.getItem("rol") == null || window.localStorage.getItem("rol") == ""?
+        {window.localStorage.getItem("id") == null || window.localStorage.getItem("id") == ""?
           children
         :
           <div>

@@ -15,7 +15,7 @@ import FormularioLogin from './FormularioLogin.jsx';
 import { useEffect } from 'react';
 
 const Login = () => {
-    
+    Inicio("/Login")
     const [usuario, setUsuario] = useState('')
     const [contrasena, setcontrasena] = useState('')
     const [personas, setPersonas] = useState([])

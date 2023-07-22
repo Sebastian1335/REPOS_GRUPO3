@@ -2,9 +2,8 @@ const Inicio = (link) => {
     let rec = true;
     if(link === "/" || link === "/Login" || link === "/Registro"){ //sin sesión iniciada
         //reiniciar localStorage
-        window.localStorage.setItem('nombreUsuario', "");
-        window.localStorage.setItem('rol', "");
-    }else if(window.localStorage.getItem("rol")!=="estudiante" && window.localStorage.getItem("rol") !== "profesor"){
+        window.localStorage.setItem('id', "")
+    }else if(window.localStorage.getItem("id")==null){
         window.localStorage.setItem("recargar", "true");
         rec = false;
         window.location.href = "/Login";

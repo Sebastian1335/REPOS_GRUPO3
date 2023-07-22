@@ -7,13 +7,21 @@ import styles from "@/app/page.module.css";
 //import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
 import Mascota from "../../components/MascotaSorpresa/page"
 import Inicio from "@/components/Inicio/inicio.jsx" //cambio
+import personaApi from "../api/persona.js";
 
 const Usuario = () => {
+  Inicio("/UsuarioPrincipal")
   //Mostrar nombre
   //const router = useRouter();
   const [nombreUsuario, setNombreUsuario] = useState("");
 
+  const handleOnLoad = async() => {
+    const result = await personaApi.findAll()
+    setNombreUsuario(result.data.find(item => item.idPersona == window.localStorage.getItem("id")).nombre)
+  }
+  
   useEffect(() => {
+    handleOnLoad()
     const nombreUsuario = window.localStorage.getItem("nombreUsuario");
     setNombreUsuario(nombreUsuario);
   }, []);
