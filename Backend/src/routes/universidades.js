@@ -10,5 +10,6 @@ router.get("/", findAll)
 router.get("/id:", findOne)
 router.post("/", create)
 router.put("/", update)
+router.delete("/:id", remove)
 
 export default router
