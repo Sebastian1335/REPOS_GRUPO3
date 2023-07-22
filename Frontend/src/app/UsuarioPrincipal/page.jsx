@@ -9,7 +9,6 @@ import Mascota from "../../components/MascotaSorpresa/page"
 import Inicio from "@/components/Inicio/inicio.jsx" //cambio
 
 const Usuario = () => {
-  Inicio("/UsuarioPrincipal");
   //Mostrar nombre
   //const router = useRouter();
   const [nombreUsuario, setNombreUsuario] = useState("");
