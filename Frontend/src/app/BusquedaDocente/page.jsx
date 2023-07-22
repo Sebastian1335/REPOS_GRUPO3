@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TopBar from '@/components/TopBar/TopBar';
 import Menu from '@/components/Menu/Menu';
 import styles from '../UsuarioPrincipal/page.module.css'
@@ -11,6 +11,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import styles2 from './page.Busqueda.docente.css'
 import Pagination from 'react-bootstrap/Pagination';
 import Inicio from "@/components/Inicio/inicio.jsx" //cambio
+import personaApi from '../api/persona.js';
 
 
 function Busqueda_docente() {
@@ -18,6 +19,16 @@ function Busqueda_docente() {
     const frutas = ["Felipe Lopez Jimenez", "Juanito alcachofa"]
     const [arr, setArr] = useState(frutas)
     const [textBusqueda, setTextBusqueda] = useState("")
+    const [profes, setProfes] = useState([])
+
+    const handleOnLoad = async() => {
+        const result = await personaApi.findAll()
+        setProfes(result.data.filter(item => item.idRol == 2))
+    }
+
+    useEffect(()=>{
+        handleOnLoad()
+    }, [])
 
     return (
         <div>

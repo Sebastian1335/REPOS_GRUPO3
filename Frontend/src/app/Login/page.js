@@ -30,6 +30,7 @@ const Login = () => {
         const user = personas.find((persona) => persona.email === usuario && persona.contrasena === contrasena)
         if (user){
             window.localStorage.setItem("id", user.idPersona)
+            window.localStorage.setItem("recargar", true)
             router.push("/UsuarioPrincipal")
         }else{
             alert("Credenciales invalidas")
