@@ -28,9 +28,14 @@ const PantallaPerfilDocenteCita = () => {
   }
 
   useEffect(()=>{
-    setId(obtenerIdDeUrl());  
-    handleOnLoad()
+    setId(obtenerIdDeUrl());
   }, [])
+
+  useEffect(()=>{
+    if(id!=0){
+      handleOnLoad()
+    }
+  }, [id])
 
   const BoxWithText = ({ text }) => (
     <div className="box">
@@ -100,7 +105,7 @@ const PantallaPerfilDocenteCita = () => {
       <div className="container">
         <div className="circle">JS</div>
         <div className="Descripcion">
-          <p>Profesor Juan Lopez</p>
+          <p>Profesor {profe.nombre} {profe.apellido}</p>
           <p>Magister en Ingenieria de Software</p>
         </div>
       </div>
@@ -113,7 +118,7 @@ const PantallaPerfilDocenteCita = () => {
         </div>
         <div className="text2-container">
           <p>Correo Electrónico</p>
-          <p><u>jlopez1949@ulima.edu.pe</u></p>
+          <p><u>{profe.email}</u></p>
         </div>
       </div>
       <p className="Cursos">Cursos</p>
