@@ -1,4 +1,4 @@
-import Calificacion from '../models/Calificacion.js'
+/*import Calificacion from '../models/Calificacion.js'
 
 const findAll = async () => {
   try {
@@ -80,4 +80,43 @@ const remove = async (id) => {
 
 const CalificacionRepository = { findAll, create, findOne,update, remove };
 
-export default CalificacionRepository
+export default CalificacionRepository*/
+
+
+let repository = [{idCalificacion: 1, idCita: 1, calificacion: 2, comentario: "Hola k ase"}, {idCalificacion: 2, idCita: 2, calificacion: 3.5, comentario: "Poool"}]
+let counter = 2
+  
+const findAll = () => {
+    return repository
+}
+
+const create = (item) => {
+    counter++
+    const newElement = {...item, idCalificacion: counter}
+    repository.push(newElement)
+    return item
+}
+
+const findOne = (id) => {
+    return repository.find(item => item.id == id)
+}
+
+const update = (item) => {
+    const index = repository.findIndex(i => i.id == item.id)
+    if(index > -1)
+        repository[index] = item
+}
+
+const remove = (id) => {
+    const index = repository.findIndex(i => i.id == id)
+    if(index > -1){
+        repository.splice(index, 1)
+        return true
+    }else{
+        return false
+    }
+}
+
+const Repository = {findAll, create, findOne, update, remove}
+
+export default Repository

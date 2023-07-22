@@ -39,7 +39,6 @@ export default function ResumenCalificaciones() {
       console.log(calificaciones);
   }
 
-
   return (
     <div>
       <h2>Calificaciones</h2>

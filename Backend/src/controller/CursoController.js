@@ -1,4 +1,4 @@
-import CursoRepository from "../repository/CursoReppository.js";
+import CursoRepository from "../repository/CursoRepository.js";
 
 const findAll = async (req, res) => {
     const result = await CursoRepository.findAll();

@@ -1,4 +1,4 @@
-import Cita from '../models/Curso.js'
+/*import Cita from '../models/Curso.js'
 
 const findAll = async () => {
     try {
@@ -80,4 +80,42 @@ const remove = async (id) => {
 
 const CitaRepository = { findAll, create, findOne,update, remove };
 
-export default CitaRepository
+export default CitaRepository*/
+
+let repository = [{idCita: 1, idPersonaDocente: 1, idPersonaAlumno: 1, fecha: "01/24/2023", horaInicio: "08:00", horaFin: "10:00", enlaceSesion: "hola.com", estado: "a", idCurso: 1}, {idCita: 2, idPersonaDocente: 2, idPersonaAlumno: 2, fecha: "01/25/2023", horaInicio: "10:00", horaFin: "11:00", enlaceSesion: "hol2a.com", estado: "n", idCurso: 2}]
+let counter = 2
+  
+const findAll = () => {
+    return repository
+}
+
+const create = (item) => {
+    counter++
+    const newElement = {...item, idCita: counter}
+    repository.push(newElement)
+    return item
+}
+
+const findOne = (id) => {
+    return repository.find(item => item.id == id)
+}
+
+const update = (item) => {
+    const index = repository.findIndex(i => i.id == item.id)
+    if(index > -1)
+        repository[index] = item
+}
+
+const remove = (id) => {
+    const index = repository.findIndex(i => i.id == id)
+    if(index > -1){
+        repository.splice(index, 1)
+        return true
+    }else{
+        return false
+    }
+}
+
+const Repository = {findAll, create, findOne, update, remove}
+
+export default Repository

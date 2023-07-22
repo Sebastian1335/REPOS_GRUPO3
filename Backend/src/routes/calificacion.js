@@ -1,5 +1,4 @@
 import Express from "express";
-
 import CalificacionController from "../controller/CalificacionController.js";
 
 const {findAll, findOne, create, update, remove} = CalificacionController

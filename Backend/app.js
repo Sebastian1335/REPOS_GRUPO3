@@ -1,4 +1,4 @@
-import express from 'express'
+/*import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 
@@ -30,4 +30,4 @@ app.use("/Cita", citaRoutes)
 app.use("/Calificacion", calificacionRoutes)
 app.use("/PersonaCurso", PersonaCursoRoutes)
 
-export default app
+export default app*/

@@ -1,4 +1,4 @@
-import Persona from '../models/Persona.js'
+/*import Persona from '../models/Persona.js'
 
 const findAll = async () => {
     try {
@@ -80,4 +80,42 @@ const remove = async (id) => {
 
 const PersonaRepository = { findAll, create, findOne,update, remove };
 
-export default PersonaRepository
+export default PersonaRepository*/
+
+let repository = [{idPersona: 1, nombre: "Adrián", apellido: "Duarte", tipoDocumento: "DNI", dni: 74143539, idRol: 1, email: "20200711@aloe", contrasena: "hola", idCarrera: 1, tituloPresentacion: "aa", presentacion: "zzz", grado: "centigrado", imagen: ""}, {idPersona: 2, nombre: "Pol", apellido: "Quispe", tipoDocumento: "DNI", dni: 74143538, idRol: 2, email: "pol@rdm", contrasena: "adios", idCarrera: 2, tituloPresentacion: "bb", presentacion: "bb", grado: "centigrado2", imagen: ""}]
+let counter = 2
+  
+const findAll = () => {
+    return repository
+}
+
+const create = (item) => {
+    counter++
+    const newElement = {...item, id: counter}
+    repository.push(newElement)
+    return item
+}
+
+const findOne = (id) => {
+    return repository.find(item => item.id == id)
+}
+
+const update = (item) => {
+    const index = repository.findIndex(i => i.id == item.id)
+    if(index > -1)
+        repository[index] = item
+}
+
+const remove = (id) => {
+    const index = repository.findIndex(i => i.id == id)
+    if(index > -1){
+        repository.splice(index, 1)
+        return true
+    }else{
+        return false
+    }
+}
+
+const Repository = {findAll, create, findOne, update, remove}
+
+export default Repository

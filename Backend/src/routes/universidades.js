@@ -1,5 +1,4 @@
 import Express from "express";
-
 import UniversidadController from "../controller/UniversidadController.js";
 
 const {findAll, findOne, create, update, remove} = UniversidadController

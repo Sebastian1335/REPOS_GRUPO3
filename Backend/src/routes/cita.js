@@ -1,6 +1,6 @@
 import Express from "express";
-
 import CitaController from "../controller/CitaController.js";
+
 const {findAll, findOne, create, update, remove} = CitaController
 
 const router = Express.Router()

@@ -1,5 +1,4 @@
 import Express from "express";
-
 import CursoController from "../controller/CursoController.js";
 
 const {findAll, findOne, create, update, remove} = CursoController

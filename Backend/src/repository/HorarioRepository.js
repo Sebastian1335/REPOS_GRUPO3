@@ -1,4 +1,4 @@
-import Horario from '../models/Horario.js'
+/*import Horario from '../models/Horario.js'
 
 const findAll = async () => {
     try {
@@ -80,4 +80,42 @@ const remove = async (id) => {
 
 const HorarioRepository = { findAll, create, findOne,update, remove };
 
-export default HorarioRepository
+export default HorarioRepository*/
+
+let repository = [{idHorario: 1, idPersona: 1, horaInicio: 8, diaDeLaSemana: "lunes", horaFin: 10}, {idHorario: 2, idPersona: 2, horaInicio: 10, diaDeLaSemana: "martes", horaFin: 11}]
+let counter = 2
+  
+const findAll = () => {
+    return repository
+}
+
+const create = (item) => {
+    counter++
+    const newElement = {...item, idHorario: counter}
+    repository.push(newElement)
+    return item
+}
+
+const findOne = (id) => {
+    return repository.find(item => item.id == id)
+}
+
+const update = (item) => {
+    const index = repository.findIndex(i => i.id == item.id)
+    if(index > -1)
+        repository[index] = item
+}
+
+const remove = (id) => {
+    const index = repository.findIndex(i => i.id == id)
+    if(index > -1){
+        repository.splice(index, 1)
+        return true
+    }else{
+        return false
+    }
+}
+
+const Repository = {findAll, create, findOne, update, remove}
+
+export default Repository

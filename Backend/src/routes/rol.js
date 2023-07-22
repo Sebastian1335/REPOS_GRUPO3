@@ -1,5 +1,4 @@
 import Express from "express";
-
 import RolController from "../controller/RolController.js";
 
 const {findAll , findOne, create, update, remove} = RolController

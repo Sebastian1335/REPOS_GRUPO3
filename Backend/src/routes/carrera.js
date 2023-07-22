@@ -1,5 +1,4 @@
 import Express from "express";
-
 import CarreraController from "../controller/CarreraController.js";
 
 const {findAll, findOne, create, update, remove} = CarreraController

@@ -1,5 +1,6 @@
 import Express from "express";
 import PersonaCursoController from "../controller/PersonaCursoController.js";
+
 const {findAll, findOne, create, update, remove} = PersonaCursoController
 
 const router = Express.Router()

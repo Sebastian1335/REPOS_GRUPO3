@@ -1,4 +1,4 @@
-import Curso from '../models/curso.js'
+/*import Curso from '../models/curso.js'
 
 const findAll = async () => {
     try {
@@ -81,4 +81,42 @@ const remove = async (id) => {
 
 const CursoRepository = { findAll, create, findOne,update, remove };
 
-export default CursoRepository
+export default CursoRepository*/
+
+let repository = [{idCurso: 1, idUniversidad: 1, nombre: "Programación Web"}, {idCurso: 2, idUniversidad: 2, nombre: "Simulación"}]
+let counter = 2
+  
+const findAll = () => {
+    return repository
+}
+
+const create = (item) => {
+    counter++
+    const newElement = {...item, idCurso: counter}
+    repository.push(newElement)
+    return item
+}
+
+const findOne = (id) => {
+    return repository.find(item => item.id == id)
+}
+
+const update = (item) => {
+    const index = repository.findIndex(i => i.id == item.id)
+    if(index > -1)
+        repository[index] = item
+}
+
+const remove = (id) => {
+    const index = repository.findIndex(i => i.id == id)
+    if(index > -1){
+        repository.splice(index, 1)
+        return true
+    }else{
+        return false
+    }
+}
+
+const Repository = {findAll, create, findOne, update, remove}
+
+export default Repository

@@ -1,4 +1,3 @@
-
 import CarreraRepository from "../repository/CarreraRepository.js";
 
 const findAll = async (req, res) => {

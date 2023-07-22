@@ -1,4 +1,4 @@
-import app from './app.js'
+/*import app from './app.js'
 import sequelize from './src/config/database.js'
 
 async function main() {
@@ -21,4 +21,39 @@ async function main() {
     }
 }
 
-main()
+main()*/
+
+import express from 'express'
+import bodyParser from 'body-parser'
+import cors from 'cors'
+import calificacionRoute from './src/routes/calificacion.js'
+import carreraRoute from './src/routes/carrera.js'
+import citaRoute from './src/routes/cita.js'
+import cursoRoute from './src/routes/curso.js'
+import horarioRoute from './src/routes/horario.js'
+import personaRoute from './src/routes/persona.js'
+import personaCursoRoute from './src/routes/personaCurso.js'
+import rolRoute from './src/routes/rol.js'
+import universidadesRoute from './src/routes/universidades.js'
+
+let app = express()
+app.use(bodyParser.json())
+app.use(cors())
+
+app.get('/', (req, res) => {
+    return res.json({result: 'OK'})
+})
+
+app.use('/calificacion', calificacionRoute)
+app.use('/carrera', carreraRoute)
+app.use('/cita', citaRoute)
+app.use('/curso', cursoRoute)
+app.use('/horario', horarioRoute)
+app.use('/persona', personaRoute)
+app.use('/personaCurso', personaCursoRoute)
+app.use('/rol', rolRoute)
+app.use('/universidad', universidadesRoute)
+
+app.listen(3001, () => {
+    console.log('Servidor iniciado.')
+})
