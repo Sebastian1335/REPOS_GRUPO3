@@ -12,6 +12,10 @@ import Button from 'react-bootstrap/Button'
 import { FormControl, FormLabel } from 'react-bootstrap'
 //import PersonaApi from '@/api/persona.js'
 import Inicio from "@/components/Inicio/inicio.jsx" //cambio
+import personaApi from "../api/persona.js"
+
+
+
 
 const Registro = () =>{
     Inicio("/Registro")
@@ -20,19 +24,23 @@ const Registro = () =>{
     const [contra2, setContra2] = useState(""); //cambio
 
     const defaultPersona = {
-        correo: "",
-        contrasena: "", //cambio
-        //contraseña1: "",
-        //contraseña2: "",
-        nombres: "",
-        apellidos: "",
-        doc: "",
-        numero: "",
-        rol: ""
+        id: 0,
+        email: "",
+        nombre: "",
+        apellido: "",
+        tipoDocumento: "",
+        dni: "",
+        idRol: "",
+        contrasena: "",
+        idCarrera: "",
+        tituloPresentacion: "",
+        presentacion: "",
+        grado: ""
     }
-
+    const [personas, setPersonas] = useState([])
     const [persona, setPersona] = useState(defaultPersona)
-    
+    const [ isNew, setIsNew ] = useState(true);
+    const [ isFormVisible, setIsFormVisible ] = useState(false)
 
     const handleRegresar = () => {
         router.push("/");
@@ -43,17 +51,17 @@ const Registro = () =>{
         else
             setShowDatosPersona(false)
     }*/
-    function validarCorreo(correo) {
-        // Expresión regular para verificar si el correo contiene el carácter "@"
+    function validaremail(email) {
+        // Expresión regular para verificar si el email contiene el carácter "@"
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return regex.test(correo);
+        return regex.test(email);
     }
-    const handleOnClick = () => {
+    const handleOnClick = async (persona) => {
         
-        if (persona.numero.length != 8){
-            alert("Numero de DNI Invalido")
-        }else if (persona.correo && !validarCorreo(persona.correo)){
-            alert("Correo electronico invalido")
+        if (persona.dni.length != 8){
+            alert("dni de DNI Invalido")
+        }else if (persona.email && !validaremail(persona.email)){
+            alert("email electronico invalido")
         }
         else if (persona.contrasena !== contra2) { //cambio
             alert("Las contraseñas no coinciden");
@@ -61,22 +69,13 @@ const Registro = () =>{
             alert("Por favor, complete todos los campos");
         }else{ 
             router.push('/');
-
-            //cambio
+            await personaApi.create(persona);
+           
+            
+            /*
             const personas = JSON.parse(window.localStorage.getItem("personas")) || [];
             personas.push(persona);
             window.localStorage.setItem("personas", JSON.stringify(personas));
-            router.push("/Login")
-            //cambio
-
-            /*
-            PersonaApi.save(persona)
-            const personas = PersonaApi.getAll()
-            let AUXArray = JSON.parse(localStorage.getItem("personas")) || [];
-            AUXArray.push(persona)
-            let arrayJSON = JSON.stringify(AUXArray)
-            localStorage.setItem("personas",arrayJSON)
-            console.log(personas)
             router.push("/Login")
             */
         }
@@ -92,17 +91,17 @@ const Registro = () =>{
                     </Row>
                     <Row className='justify-content-md-center'>
                         <Col>
-                            <FormLabel htmlFor='Correo'className={styles.color}>Correo</FormLabel>
-                            <FormControl type='text' id="Correo"
-                                value={persona.correo}
-                                onChange={e => setPersona({...persona,correo: e.target.value})}/>
+                            <FormLabel htmlFor='email'className={styles.color}>email</FormLabel>
+                            <FormControl type='text' id="email"
+                                value={persona.email}
+                                onChange={e => setPersona({...persona,email: e.target.value})}/>
                         </Col>
                         <Col>
-                            <FormLabel htmlFor='Correo'className={styles.color}>Contraseña</FormLabel>
+                            <FormLabel htmlFor='email'className={styles.color}>Contraseña</FormLabel>
                             <FormControl type='password' id="contraseña1"
                                 value={persona.contrasena}
                                 onChange={e => setPersona({...persona,contrasena: e.target.value})}/> {/**/}
-                            <FormLabel htmlFor='Correo'className={styles.color}>Confirmar Contraseña</FormLabel>
+                            <FormLabel htmlFor='email'className={styles.color}>Confirmar Contraseña</FormLabel>
                             <FormControl type='password' id="contraseña2"
                                 value={contra2}
                                 onChange={e => setContra2(e.target.value)}/> {/**/}
@@ -116,10 +115,10 @@ const Registro = () =>{
                     </Row>
                     <Row>
                         <Col>
-                        <FormLabel htmlFor='nombres' className = {styles.color}>Nombres</FormLabel>
-                            <FormControl type='text' id="nombres"
-                                value={persona.nombres}
-                                onChange={e => setPersona({...persona,nombres: e.target.value})}/>
+                        <FormLabel htmlFor='nombre' className = {styles.color}>Nombre</FormLabel>
+                            <FormControl type='text' id="nombre"
+                                value={persona.nombre}
+                                onChange={e => setPersona({...persona,nombre: e.target.value})}/>
                         
                             <FloatingLabel className= {styles.ex} controlId="floatingSelect" label="Tipo Documento">
                                 <Form.Select className={styles.color} aria-label="Floating label select example"
@@ -134,15 +133,15 @@ const Registro = () =>{
                             </FloatingLabel>
                         </Col>
                         <Col>
-                        <FormLabel htmlFor='apellidos' className={styles.color}>Apellidos</FormLabel>
-                            <FormControl type='text' id="apellidos"
-                                value={persona.apellidos}
-                                onChange={e => setPersona({...persona,apellidos: e.target.value})}/>
+                        <FormLabel htmlFor='apellido' className={styles.color}>Apellido</FormLabel>
+                            <FormControl type='text' id="apellido"
+                                value={persona.apellido}
+                                onChange={e => setPersona({...persona,apellido: e.target.value})}/>
                         
-                        <FormLabel htmlFor='numero'className={styles.color}>Número de Documento</FormLabel>
-                            <FormControl type='number' id="numero"
-                                value={persona.numero}
-                                onChange={e => setPersona({...persona,numero: e.target.value})}/>
+                        <FormLabel htmlFor='dni'className={styles.color}>Número de Documento</FormLabel>
+                            <FormControl type='number' id="dni"
+                                value={persona.dni}
+                                onChange={e => setPersona({...persona,dni: e.target.value})}/>
                         </Col>
                         
                     </Row>
@@ -152,13 +151,13 @@ const Registro = () =>{
                             <Form.Select 
                                 className={styles.color}
                                 aria-label="Floating label select example"
-                                id='rol'
-                                name="rol"
-                                value={persona.rol}
-                                onChange={e => setPersona({...persona,rol: e.target.value})}>
-                                    <option value="" className={styles.color}>***</option>
-                                    <option value="estudiante" className={styles.color}>Estudiante</option>
-                                    <option value="profesor" className={styles.color}>Profesor</option>
+                                id='idRol'
+                                name="idRol"
+                                value={persona.idRol}
+                                onChange={e => setPersona({...persona,idRol: e.target.value})}>
+                                    <option value = "" className={styles.color}>***</option>
+                                    <option value = "1" className={styles.color}>Estudiante</option>
+                                    <option value = "2" className={styles.color}>Profesor</option>
                             </Form.Select>
                             </FloatingLabel>
                         </Col>
